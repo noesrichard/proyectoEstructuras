@@ -13,13 +13,13 @@ import proyectomaraton.Participante;
  * @author carri
  */
 public class Gestor {
-    Lista listaParticipantes;
+    private ListaParticipantes listaParticipantes;
     private static Gestor instancia = null;
+    private String estadoMaraton;  
     
     private Gestor() {
-        this.listaParticipantes = new Lista();
-        
-
+        this.listaParticipantes = new ListaParticipantes();
+        this.estadoMaraton = null;
     }
 
     public static Gestor get_() {
@@ -27,6 +27,14 @@ public class Gestor {
             instancia = new Gestor();
         }
         return instancia;
+    }
+    
+    public void iniciarMaraton(){ 
+        this.estadoMaraton = "Iniciado";
+    }
+    
+    public void finalizarMarton(){ 
+        this.estadoMaraton = "Finalizado";
     }
     
     public boolean agregarParticipante(String cedula,String nombre,String apellido,

@@ -14,7 +14,7 @@ import gestor.Gestor;
  *
  * @author carri
  */
-public class ProyectoMaraton {
+public class Main {
 
     /**
      * @param args the command line arguments

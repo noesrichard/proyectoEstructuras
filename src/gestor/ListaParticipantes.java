@@ -11,12 +11,12 @@ import proyectomaraton.Participante;
  *
  * @author carri
  */
-public class Lista {
+public class ListaParticipantes {
     Nodo primero;
     Nodo ultimo;
     int length; 
     
-    Lista(){ 
+    ListaParticipantes(){ 
         this.primero = null;
     }
     
@@ -31,6 +31,7 @@ public class Lista {
             this.primero = nuevo; 
             this.ultimo = nuevo; 
             this.length = 1; 
+            return true; 
         }
         this.ultimo.siguiente = nuevo; 
         this.ultimo = this.ultimo.siguiente;
@@ -38,7 +39,7 @@ public class Lista {
         return true; 
     }
     
-    Object iterar(int i){ 
+    Participante iterar(int i){ 
         Nodo aux = this.primero; 
         if ( this.length < 1 ){ 
             return null; 
