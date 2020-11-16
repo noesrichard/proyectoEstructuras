@@ -78,5 +78,23 @@ public class Gestor {
         return null; 
     }
 
+    public Participante getParticipante(Participante participante) {
+        for ( int i = 0; i < listaParticipantes.length; i++){ 
+            if ( listaParticipantes.iterar(i) == participante){
+                return listaParticipantes.iterar(i); 
+            }
+        }
+        return null; 
+    }
+
+    public Participante getParticipantePorId(int id) {
+        for ( int i = 0; i < listaParticipantes.length; i++){ 
+            if ( listaParticipantes.iterar(i).getId() == id){
+                return listaParticipantes.iterar(i); 
+            }
+        }
+        return null;
+    }
+
     
 }

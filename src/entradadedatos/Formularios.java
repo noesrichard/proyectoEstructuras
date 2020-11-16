@@ -43,37 +43,37 @@ public class Formularios {
     }
 
     public static void actualizarNombre(Participante participante) {
-        String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_EXISTENTE);
         String nombre = Consola.ingresarDato(ENTRADAS.NOMBRE);
-        g.getParticipantePorCedula(cedula).setNombre(nombre);
+        g.getParticipante(participante).setNombre(nombre);
     }
 
     public static void actualizarApellido(Participante participante) {
-        String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_EXISTENTE);
         String apellido = Consola.ingresarDato(ENTRADAS.APELLIDO);
-        g.getParticipantePorCedula(cedula).setApellido(apellido);
+        g.getParticipante(participante).setApellido(apellido);
     }
 
     public static void actualizarAuspiciantes(Participante participante) {
-        String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_EXISTENTE);
-        String auspiciantes = Consola.ingresarDato(ENTRADAS.APELLIDO);
-        g.getParticipantePorCedula(cedula).setAuspiciantes(auspiciantes);
+        String auspiciantes = Consola.ingresarDato(ENTRADAS.AUSPICIANTES);
+        g.getParticipante(participante).setAuspiciantes(auspiciantes);
     }
 
     public static void actualizarEdad(Participante participante) {
-        String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_EXISTENTE);
-        int edad = Integer.parseInt(Consola.ingresarDato(ENTRADAS.APELLIDO));
-        g.getParticipantePorCedula(cedula).setEdad(edad);
+        int edad = Integer.parseInt(Consola.ingresarDato(ENTRADAS.EDAD));
+        g.getParticipante(participante).setEdad(edad);
     }
 
     public static void actualizarSexo(Participante participante) {
-        String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_EXISTENTE);
-        char sexo = Consola.ingresarDato(ENTRADAS.APELLIDO).charAt(0);
-        g.getParticipantePorCedula(cedula).setSexo(sexo);
+        char sexo = Consola.ingresarDato(ENTRADAS.SEXO).charAt(0);
+        g.getParticipante(participante).setSexo(sexo);
     }
 
     public static void registrarHoraLlegada() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int id = Integer.parseInt(Consola.ingresarDato(ENTRADAS.ID));
+        String horas = Consola.ingresarDato(ENTRADAS.HORAS);
+        String minutos = Consola.ingresarDato(ENTRADAS.MINUTOS);
+        String segundos = Consola.ingresarDato(ENTRADAS.SEGUNDOS);
+        int tiempo = Integer.parseInt(horas+minutos+segundos);
+        g.getParticipantePorId(id).setHoraLLegada(tiempo);
     }
     
 }

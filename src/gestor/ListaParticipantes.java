@@ -30,12 +30,14 @@ public class ListaParticipantes {
         if ( this.primero == null ){ 
             this.primero = nuevo; 
             this.ultimo = nuevo; 
-            this.length = 1; 
+            this.length = 1;
+            ((Participante)(nuevo.dato)).setId(length);
             return true; 
         }
         this.ultimo.siguiente = nuevo; 
         this.ultimo = this.ultimo.siguiente;
         this.length ++;
+        ((Participante)(nuevo.dato)).setId(length);
         return true; 
     }
     

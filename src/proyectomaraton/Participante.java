@@ -10,6 +10,7 @@ package proyectomaraton;
  * @author carri
  */
 public class Participante {
+    private int id; 
     private String cedula,nombre,apellido,auspiciantes; 
     private int edad, horaLlegada; 
     private char sexo,categoria; 
@@ -58,6 +59,14 @@ public class Participante {
 
     public void setSexo(char sexo) {
         this.sexo = sexo; 
+    }
+    
+    public void setId(int id ){ 
+        this.id = id; 
+    }
+
+    public int getId() {
+        return this.id; 
     }
     
     
