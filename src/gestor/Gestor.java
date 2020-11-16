@@ -19,7 +19,7 @@ public class Gestor {
     
     private Gestor() {
         this.listaParticipantes = new ListaParticipantes();
-        this.estadoMaraton = null;
+        this.estadoMaraton = "";
     }
 
     public static Gestor get_() {
@@ -33,8 +33,12 @@ public class Gestor {
         this.estadoMaraton = "Iniciado";
     }
     
-    public void finalizarMarton(){ 
+    public void finalizarMaraton(){ 
         this.estadoMaraton = "Finalizado";
+    }
+    
+    public String getEstadoMaraton() {
+        return this.estadoMaraton;
     }
     
     public boolean agregarParticipante(String cedula,String nombre,String apellido,
@@ -48,4 +52,31 @@ public class Gestor {
             System.out.println(listaParticipantes.iterar(i).toString());
         }
     }
+
+    public void mostrarParticipantePorCedula(String cedula) {
+        for ( int i = 0; i < listaParticipantes.length; i++){
+            if ( listaParticipantes.iterar(i).getCedula().equals(cedula)){
+                System.out.println(listaParticipantes.iterar(i).toString());
+            }
+        }
+    }
+
+    public void borrarParticipantePorCedula(String cedula) {
+        for ( int i = 0; i < listaParticipantes.length; i++){ 
+            if ( listaParticipantes.iterar(i).getCedula().equals(cedula)){
+                listaParticipantes.borrar(i);
+            }
+        }
+    }
+
+    public Participante getParticipantePorCedula(String cedula) {
+        for ( int i = 0; i < listaParticipantes.length; i++){ 
+            if ( listaParticipantes.iterar(i).getCedula().equals(cedula)){
+                return listaParticipantes.iterar(i); 
+            }
+        }
+        return null; 
+    }
+
+    
 }

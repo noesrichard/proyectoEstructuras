@@ -52,4 +52,24 @@ public class ListaParticipantes {
         }
         return (Participante)(aux.dato); 
     }
+    
+    boolean borrar(int posicion){
+        if ( this.length == 1 ){ 
+            this.primero = null;
+            this.length --;
+            return true; 
+        }
+        else if ( posicion == 0 ){ 
+            this.primero = this.primero.siguiente; 
+            this.length --;
+            return true; 
+        }
+        Nodo aux = this.primero; 
+        for ( int i = 1; i < posicion ; i++){ 
+            aux  = aux.siguiente; 
+        }
+        aux.siguiente = aux.siguiente.siguiente; 
+        this.length --;
+        return true; 
+    }
 }

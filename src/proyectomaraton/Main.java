@@ -24,6 +24,9 @@ public class Main {
         // TODO code application logic here
         Formularios.agregarParticipante();
         g.imprimirLista();
+        Formularios.visualizarParticipante();
+        Formularios.borrarParticipante();
+        g.imprimirLista();
     }
     
 }

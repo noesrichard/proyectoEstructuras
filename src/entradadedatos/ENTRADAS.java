@@ -13,18 +13,21 @@ import validacion.Validador;
  * @author carri
  */
 public enum ENTRADAS {
-    NOMBRE      (MENSAJES.NOMBRE, REGEX.NOMBRE_APELLIDO.txt()),
-    CEDULA_NUEVA(MENSAJES.CEDULA,new Cedula()), 
-    APELLIDO    (MENSAJES.APELLIDO, REGEX.NOMBRE_APELLIDO.txt()), 
-    EDAD        (MENSAJES.EDAD, REGEX.NUMEROS_ENTEROS.txt()), 
-    SEXO        (MENSAJES.SEXO, REGEX.SEXO.txt());
+    NOMBRE          (MENSAJES.NOMBRE, REGEX.NOMBRE_APELLIDO.txt()),
+    CEDULA_NUEVA    (MENSAJES.CEDULA,new Cedula()), 
+    APELLIDO        (MENSAJES.APELLIDO, REGEX.NOMBRE_APELLIDO.txt()), 
+    EDAD            (MENSAJES.EDAD, REGEX.NUMEROS_ENTEROS.txt()), 
+    SEXO            (MENSAJES.SEXO, REGEX.SEXO.txt()),
+    MENU            (MENSAJES.MENU, REGEX.MENU.txt()), 
+    CEDULA_EXISTENTE(MENSAJES.CEDULA, new Cedula());
 
     private enum MENSAJES {
         NOMBRE  ("INGRESE EL NOMBRE DEL PARTICIPANTE: ", "EL NOMBRE DEL PARTICIPANTE ES INVALIDO!"),
         CEDULA  ("INGRESE LA CEDULA: ","CEDULA NO VALIDA!"),
         APELLIDO("INGRESE EL APELLIDO DEL PARTICIPANTE: ","EL APELLIDO DEL PARTICIPANTE ES INVALIDO!"), 
         EDAD    ("INGRESE LA EDAD DEL PARTICIPANTE: ","LA EDAD DEL PARTICIPANTE ES INVALIDA!"), 
-        SEXO    ("INGRESE EL SEXO DEL PARTICIPANTE (M|F): ","EL SEXO DEL PARTICIPANTE NO ES VALIDO!");
+        SEXO    ("INGRESE EL SEXO DEL PARTICIPANTE (M|F): ","EL SEXO DEL PARTICIPANTE NO ES VALIDO!"), 
+        MENU    ("OPCION: ","OPCION NO VALIDA!");
         
         private String peticion, error;
 
@@ -47,7 +50,8 @@ public enum ENTRADAS {
 
         NOMBRE_APELLIDO("[a-zA-Z]+"), 
         NUMEROS_ENTEROS("[0-9]+"), 
-        SEXO("M|F");
+        SEXO("M|F"), 
+        MENU("[0-%d]");
 
         private String valor;
 
@@ -90,6 +94,10 @@ public enum ENTRADAS {
 
     public String getError() {
         return this.mensajes.getError();
+    }
+    
+    public void setNumeroDeOpcionesMenu(int numOpciones){ 
+        this.regex = String.format("[0-%d]", numOpciones);
     }
 
 }

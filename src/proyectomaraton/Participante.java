@@ -31,9 +31,35 @@ public class Participante {
         this.categoria = categoria; 
     }
     
+    public String getCedula(){ 
+        return this.cedula; 
+    }
+    
     @Override
     public String toString(){ 
         return this.cedula; 
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre; 
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido; 
+    }
+
+    public void setAuspiciantes(String auspiciantes) {
+        this.auspiciantes = auspiciantes; 
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad; 
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = sexo; 
+    }
+    
+    
     
 }
