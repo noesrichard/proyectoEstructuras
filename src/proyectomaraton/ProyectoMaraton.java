@@ -5,8 +5,9 @@
  */
 package proyectomaraton;
 
-import entradadedatos.Campos;
-import entradadedatos.Entrada;
+
+import entradadedatos.Consola;
+import entradadedatos.ENTRADAS;
 
 /**
  *
@@ -19,7 +20,7 @@ public class ProyectoMaraton {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        String nombre = Entrada.ingresarDato(Campos.CAMPOS.NOMBRE);
+        String nombre = Consola.ingresarDato(ENTRADAS.NOMBRE);
     }
     
 }
