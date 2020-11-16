@@ -10,11 +10,12 @@ package proyectomaraton;
  * @author carri
  */
 public class Participante {
-    private String nombre,apellido,auspiciantes; 
+    private String cedula,nombre,apellido,auspiciantes; 
     private int edad, horaLlegada; 
     private char sexo,categoria; 
     
-    public Participante(String nombre, String apellido, int edad, char sexo,String auspiciantes){ 
+    public Participante(String cedula,String nombre, String apellido, int edad, char sexo,String auspiciantes){ 
+        this.cedula = cedula; 
         this.nombre = nombre; 
         this.apellido = apellido; 
         this.edad = edad; 
@@ -28,6 +29,11 @@ public class Participante {
     
     public void setCategoria(char categoria){ 
         this.categoria = categoria; 
+    }
+    
+    @Override
+    public String toString(){ 
+        return this.cedula; 
     }
     
 }

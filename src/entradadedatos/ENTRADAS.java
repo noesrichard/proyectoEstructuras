@@ -5,6 +5,7 @@
  */
 package entradadedatos;
 
+import validacion.Cedula;
 import validacion.Validador;
 
 /**
@@ -12,10 +13,19 @@ import validacion.Validador;
  * @author carri
  */
 public enum ENTRADAS {
-    NOMBRE(MENSAJES.NOMBRE, REGEX.NOMBRE.txt());
+    NOMBRE(MENSAJES.NOMBRE, REGEX.NOMBRE_APELLIDO.txt()),
+    CEDULA_NUEVA(MENSAJES.CEDULA,new Cedula()), 
+    APELLIDO(MENSAJES.APELLIDO, REGEX.NOMBRE_APELLIDO.txt()), 
+    EDAD(MENSAJES.EDAD, REGEX.NUMEROS_ENTEROS.txt()), 
+    SEXO(MENSAJES.SEXO, REGEX.SEXO.txt());
 
     private enum MENSAJES {
-        NOMBRE("INGRESE EL NOMBRE DEL PARTICIPANTE: ", "EL NOMBRE DEL PARTICIPANTE ES INVALIDO");
+        NOMBRE("INGRESE EL NOMBRE DEL PARTICIPANTE: ", "EL NOMBRE DEL PARTICIPANTE ES INVALIDO!"),
+        CEDULA("INGRESE LA CEDULA: ","CEDULA NO VALIDA!"),
+        APELLIDO("INGRESE EL APELLIDO DEL PARTICIPANTE: ","EL APELLIDO DEL PARTICIPANTE ES INVALIDO!"), 
+        EDAD("INGRESE LA EDAD DEL PARTICIPANTE: ","LA EDAD DEL PARTICIPANTE ES INVALIDA!"), 
+        SEXO("INGRESE EL SEXO DEL PARTICIPANTE (M|F): ","EL SEXO DEL PARTICIPANTE NO ES VALIDO!");
+        
         private String peticion, error;
 
         private MENSAJES(String peticion, String error) {
@@ -30,11 +40,14 @@ public enum ENTRADAS {
         String getError() {
             return this.error;
         }
+
     }
 
     private enum REGEX {
 
-        NOMBRE("[a-zA-Z]+");
+        NOMBRE_APELLIDO("[a-zA-Z]+"), 
+        NUMEROS_ENTEROS("[0-9]+"), 
+        SEXO("M|F");
 
         private String valor;
 

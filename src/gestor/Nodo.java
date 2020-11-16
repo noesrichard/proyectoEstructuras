@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyectomaraton;
+package gestor;
 
 /**
  *
  * @author carri
  */
-public class Gestor {
+public class Nodo {
+    Object dato; 
+    Nodo siguiente; 
     
+    public Nodo(Object dato){ 
+        this.dato = dato; 
+        this.siguiente = null; 
+    }
 }

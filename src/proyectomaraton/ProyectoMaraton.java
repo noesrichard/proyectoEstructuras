@@ -6,8 +6,9 @@
 package proyectomaraton;
 
 
-import entradadedatos.Consola;
-import entradadedatos.ENTRADAS;
+
+import entradadedatos.Formularios;
+import gestor.Gestor;
 
 /**
  *
@@ -18,9 +19,11 @@ public class ProyectoMaraton {
     /**
      * @param args the command line arguments
      */
+    static Gestor g = Gestor.get_();
     public static void main(String[] args) {
         // TODO code application logic here
-        String nombre = Consola.ingresarDato(ENTRADAS.NOMBRE);
+        Formularios.agregarParticipante();
+        g.imprimirLista();
     }
     
 }
