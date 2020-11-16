@@ -12,11 +12,11 @@ import validacion.Validador;
  * @author carri
  */
 public class Campos {
+
+
     
     private enum MENSAJES{ 
         NOMBRE("INGRESE EL NOMBRE DEL PARTICIPANTE: ","EL NOMBRE DEL PARTICIPANTE ES INVALIDO");
-        
-        
         private String peticion,error;
 
         private MENSAJES(String peticion, String error) {
@@ -34,8 +34,24 @@ public class Campos {
         
     }
     
-    enum CAMPOS{ 
-        NOMBRE();
+    private enum REGEX{ 
+        
+        NOMBRE("[a-zA-Z]+");
+        
+        private String valor;
+        
+        private REGEX(String valor){ 
+            this.valor = valor;  
+        }
+        
+        public String txt(){ 
+            return this.valor; 
+        }
+        
+        
+    }    
+    public enum CAMPOS{ 
+        NOMBRE(MENSAJES.NOMBRE,REGEX.NOMBRE.txt());
         
         private MENSAJES mensajes;
         private String regex; 
