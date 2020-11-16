@@ -5,7 +5,7 @@
  */
 package entradadedatos;
 
-import gestor.Gestor;
+import gestion.Gestor;
 import proyectomaraton.Participante;
 
 /**
@@ -26,7 +26,7 @@ public class Formularios {
 
     public static void visualizarParticipante() {
         String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_EXISTENTE);
-        g.mostrarParticipantePorCedula(cedula);
+        g.imprimirParticipantePorCedula(cedula);
         
     }
 
@@ -36,9 +36,9 @@ public class Formularios {
         
     }
 
-    public static Participante getParticipante() {
+    public static Participante getParticipantePorCedula() {
         String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_EXISTENTE);
-        g.mostrarParticipantePorCedula(cedula);
+        g.imprimirParticipantePorCedula(cedula);
         return g.getParticipantePorCedula(cedula);
     }
 
@@ -67,7 +67,7 @@ public class Formularios {
         g.getParticipante(participante).setSexo(sexo);
     }
 
-    public static void registrarHoraLlegada() {
+    public static void registrarHoraDeLlegadaPorId() {
         int id = Integer.parseInt(Consola.ingresarDato(ENTRADAS.ID));
         String horas = Consola.ingresarDato(ENTRADAS.HORAS);
         String minutos = Consola.ingresarDato(ENTRADAS.MINUTOS);
@@ -75,5 +75,26 @@ public class Formularios {
         int tiempo = Integer.parseInt(horas+minutos+segundos);
         g.getParticipantePorId(id).setHoraLLegada(tiempo);
     }
+    
+    public static void registrarHoraDeLlegadaPorCedula() {
+        String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_EXISTENTE);
+        String horas = Consola.ingresarDato(ENTRADAS.HORAS);
+        String minutos = Consola.ingresarDato(ENTRADAS.MINUTOS);
+        String segundos = Consola.ingresarDato(ENTRADAS.SEGUNDOS);
+        int tiempo = Integer.parseInt(horas+minutos+segundos);
+        g.getParticipantePorCedula(cedula).setHoraLLegada(tiempo);
+    }
+
+    public static void registrarNoParticipePorId() {
+        int id = Integer.parseInt(Consola.ingresarDato(ENTRADAS.ID));
+        g.getParticipantePorId(id).noParticipo();
+    }
+
+    public static void registrarNoParticipePorCedula() {
+       String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_EXISTENTE);
+       g.getParticipantePorCedula(cedula).noParticipo();
+    }
+
+    
     
 }

@@ -8,7 +8,7 @@ package interfaz;
 import entradadedatos.Consola;
 import entradadedatos.ENTRADAS;
 import entradadedatos.Formularios;
-import gestor.Gestor;
+import gestion.Gestor;
 
 /**
  *
@@ -19,7 +19,7 @@ public class MenuPrincipal {
     static Gestor g = Gestor.get_();
 
     public static boolean menuPrincipal() {
-        int opcion = imprimirMenuPrincipal();
+        int opcion = seleccionarOpcionMenuPrincipal();
         switch (opcion) {
             case 1:
                 opcionUno();
@@ -42,9 +42,9 @@ public class MenuPrincipal {
                 MenuParticipante.menu();
                 break;
             case "Iniciado":
-                Formularios.registrarHoraLlegada();
+                menuRegistrarHoraDeLlegada();
                 break;
-            case "Terminado":
+            case "Finalizado":
                 MenuReportes.menu();
                 break;
             default:
@@ -58,7 +58,7 @@ public class MenuPrincipal {
                 g.iniciarMaraton();
                 break;
             case "Iniciado":
-                Formularios.registrarNoParticipe();
+                menuRegistrarNoParticipe(); 
                 break;
             default:
                 break;
@@ -71,7 +71,13 @@ public class MenuPrincipal {
         }
     }
 
-    private static int imprimirMenuPrincipal() {
+    private static int seleccionarOpcionMenuPrincipal() {
+        int numOpciones = imprimirMenuPrincipal();
+        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
+        return Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
+    }
+    
+    private static int imprimirMenuPrincipal(){ 
         int numOpciones = 0;
         System.out.println("\n");
         System.out.println(Mensajes.MENU_PRINCIPAL.CABEZERA.txt());
@@ -87,13 +93,44 @@ public class MenuPrincipal {
                 System.out.println(Mensajes.MENU_PRINCIPAL.FINALIZAR.txt());
                 numOpciones = 3;
                 break;
-            case "Terminado":
+            case "Finalizado":
                 System.out.println(Mensajes.MENU_PRINCIPAL.VER_REPORTES.txt());
                 numOpciones = 1;
                 break;
         }
         System.out.println(Mensajes.MENU_PRINCIPAL.SALIR.txt());
-        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
+        return numOpciones; 
+    }
+    
+    
+    private static void menuRegistrarNoParticipe() {
+        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
+        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
+        ENTRADAS.MENU.setNumeroDeOpcionesMenu(2);
+        String opcion = Consola.ingresarDato(ENTRADAS.MENU);
+        switch(opcion){ 
+            case "1": 
+                Formularios.registrarNoParticipePorId();
+                break; 
+            case "2": 
+                Formularios.registrarNoParticipePorCedula();
+                break;
+        }
+    }
+    
+    
+    private static void menuRegistrarHoraDeLlegada(){ 
+        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
+        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
+        ENTRADAS.MENU.setNumeroDeOpcionesMenu(2);
+        String opcion = Consola.ingresarDato(ENTRADAS.MENU);
+        switch(opcion){ 
+            case "1":
+                Formularios.registrarHoraDeLlegadaPorId();
+                break;
+            case "2": 
+                Formularios.registrarHoraDeLlegadaPorCedula();
+                break; 
+        }
     }
 }

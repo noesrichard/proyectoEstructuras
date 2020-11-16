@@ -8,7 +8,8 @@ package proyectomaraton;
 
 
 import entradadedatos.Formularios;
-import gestor.Gestor;
+import gestion.Gestor;
+import interfaz.MenuPrincipal;
 
 /**
  *
@@ -22,11 +23,10 @@ public class Main {
     static Gestor g = Gestor.get_();
     public static void main(String[] args) {
         // TODO code application logic here
-        Formularios.agregarParticipante();
-        g.imprimirLista();
-        Formularios.visualizarParticipante();
-        Formularios.borrarParticipante();
-        g.imprimirLista();
+        
+        while(true){ 
+            MenuPrincipal.menuPrincipal();
+        }
     }
     
 }

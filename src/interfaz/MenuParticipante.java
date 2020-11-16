@@ -8,7 +8,7 @@ package interfaz;
 import entradadedatos.Consola;
 import entradadedatos.ENTRADAS;
 import entradadedatos.Formularios;
-import gestor.Gestor;
+import gestion.Gestor;
 import proyectomaraton.Participante;
 
 /**
@@ -20,7 +20,7 @@ class MenuParticipante {
     static void menu() {
         boolean volver = false;
         do {
-            String opcion = imprimirMenuParticipante();
+            String opcion = seleccionarOpcionMenuParticipantes();
             switch (opcion) {
                 case "1":
                     Formularios.agregarParticipante();
@@ -42,10 +42,10 @@ class MenuParticipante {
     }
     private static void menuActualizarParticipante() {
         boolean volver = false;
-        Participante participante = Formularios.getParticipante();
+        Participante participante = Formularios.getParticipantePorCedula();
         do {            
             if (participante != null) {
-                String opcion = imprimirMenuActualizarParticipante(); 
+                String opcion = seleccionarOpcionMenuActualizar(); 
                 switch (opcion) {
                     case "1":
                         Formularios.actualizarNombre(participante);
@@ -67,14 +67,14 @@ class MenuParticipante {
         } while (volver == false);
     }
     
-    public static String imprimirMenuParticipante() {
+    public static String seleccionarOpcionMenuParticipantes() {
         int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_PARTICIPANTE.values());
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
         return Consola.ingresarDato(ENTRADAS.MENU);
     }
     
     
-    public static String imprimirMenuActualizarParticipante() {
+    public static String seleccionarOpcionMenuActualizar() {
         int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_ACTUALIZAR.values());
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
         return Consola.ingresarDato(ENTRADAS.MENU);

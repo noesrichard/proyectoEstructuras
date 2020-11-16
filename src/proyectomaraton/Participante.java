@@ -12,20 +12,27 @@ package proyectomaraton;
 public class Participante {
     private int id; 
     private String cedula,nombre,apellido,auspiciantes; 
-    private int edad, horaLlegada; 
+    private int edad, horaDeLlegada; 
     private char sexo,categoria; 
+    private boolean participo; 
     
-    public Participante(String cedula,String nombre, String apellido, int edad, char sexo,String auspiciantes){ 
+    public Participante(String cedula,String nombre, String apellido, int edad, char sexo,String auspiciantes, char categoria){ 
         this.cedula = cedula; 
         this.nombre = nombre; 
         this.apellido = apellido; 
         this.edad = edad; 
         this.sexo = sexo; 
         this.auspiciantes = auspiciantes; 
+        this.categoria = categoria;
+        this.participo = true; 
+    }
+    
+    public int getHoraDeLlegada(){ 
+        return this.horaDeLlegada; 
     }
     
     public void setHoraLLegada(int horaLlegada){ 
-        this.horaLlegada = horaLlegada; 
+        this.horaDeLlegada = horaLlegada; 
     }
     
     public void setCategoria(char categoria){ 
@@ -38,7 +45,9 @@ public class Participante {
     
     @Override
     public String toString(){ 
-        return this.cedula; 
+        return String.format("%10s %20s %20s %30s %4s %4s %9s %8s \n", 
+                this.cedula, this.nombre, this.apellido, this.auspiciantes, 
+                this.edad, this.sexo, this.categoria, this.horaDeLlegada);
     }
 
     public void setNombre(String nombre) {
@@ -69,6 +78,16 @@ public class Participante {
         return this.id; 
     }
     
+    public void noParticipo(){ 
+        this.participo = false; 
+    }
     
+    public boolean getParticipo(){ 
+        return this.participo; 
+    }
+
+    public char getCategoria() {
+        return this.categoria; 
+    }
     
 }

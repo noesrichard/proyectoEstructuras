@@ -17,14 +17,14 @@ class Mensajes {
     }
 
     enum MENU_PRINCIPAL implements MENSAJES_MENUS {
-        CABEZERA("***********    MENU PRINCIPAL **********"),
-        MENU_PARTICIPANTES("[1] MENU PARTICIPANTES "),
-        SALIDA("[2] DAR SALIDA AL MARATON "),
-        REGISTRAR_HORA("[1] REGISTAR LLEGADA PARTICIPANTE"),
-        REGISTRAR_NO_PARTICIPES("[2] REGISTRAR INSCRITO QUE NO PARTICIPO"),
-        FINALIZAR("[3] FINALIZAR MARATON "),
-        VER_REPORTES("[1] VER REPORTES "),
-        SALIR("[0] SALIR");
+        CABEZERA                ("***********    MENU PRINCIPAL **********"),
+        MENU_PARTICIPANTES      ("[1] MENU PARTICIPANTES "),
+        SALIDA                  ("[2] DAR SALIDA AL MARATON "),
+        REGISTRAR_HORA          ("[1] REGISTAR LLEGADA PARTICIPANTE"),
+        REGISTRAR_NO_PARTICIPES ("[2] REGISTRAR INSCRITO QUE NO PARTICIPO"),
+        FINALIZAR               ("[3] FINALIZAR MARATON "),
+        VER_REPORTES            ("[1] VER REPORTES "),
+        SALIR                   ("[0] SALIR");
         
 
         private String valor;
@@ -41,12 +41,12 @@ class Mensajes {
 
     enum MENU_PARTICIPANTE implements MENSAJES_MENUS {
 
-        CABEZERA("******* MENU PARTICIPANTE ********"),
-        CREAR("[1] CREAR PARTICIPANTE"),
-        VISUALIZAR("[2] VISUALIZAR PARTICIPANTE"),
-        ACTUALIZAR("[3] ACTUALIZAR PARTICIPANTE"),
-        BORRAR("[4] BORRAR PARTICIPANTE"),
-        VOLVER("[5] VOLVER");
+        CABEZERA    ("******* MENU PARTICIPANTE ********"),
+        CREAR       ("[1] CREAR PARTICIPANTE"),
+        VISUALIZAR  ("[2] VISUALIZAR PARTICIPANTE"),
+        ACTUALIZAR  ("[3] ACTUALIZAR PARTICIPANTE"),
+        BORRAR      ("[4] BORRAR PARTICIPANTE"),
+        VOLVER      ("[5] VOLVER");
 
         private String valor;
 
@@ -67,7 +67,7 @@ class Mensajes {
         OPCION_3("[3] ACTUALIZAR AUSPICIANTES"),
         OPCION_4("[4] ACTUALIZAR EDAD"),
         OPCION_5("[5] ACTUALIZAR SEXO"),
-        VOLVER("[6] VOLVER");
+        VOLVER  ("[6] VOLVER");
 
         private String valor;
 
@@ -87,7 +87,7 @@ class Mensajes {
         OPCION_2("[2] PARTICIPANTES POR CATEGORIA EN ORDEN DE LLEGADA "),
         OPCION_3("[3] INSCRITOS QUE NO PARTICIPARON "),
         OPCION_4("[4] PARTICIPANTES QUE NO COMPLETARON LA CARRERA"),
-        VOLVER("[5] VOLVER");
+        VOLVER  ("[5] VOLVER");
 
         private String valor;
 
@@ -104,10 +104,9 @@ class Mensajes {
 
     enum MENU_CATEGORIAS implements MENSAJES_MENUS {
         CABEZERA("*********CATEGORIAS************"),
-        A("[1] CATEGORIA A"),
-        B("[2] CATEGORIA B"),
-        C("[3] CATEGORIA C"),
-        VOLVER("[4] VOLVER");
+        A       ("[1] CATEGORIA A"),
+        B       ("[2] CATEGORIA B"),
+        C       ("[3] CATEGORIA C");
         private String valor;
 
         private MENU_CATEGORIAS(String v) {
@@ -127,6 +126,21 @@ class Mensajes {
             numOpciones++;
         }
         return numOpciones;
+    }   
+    
+    enum ID_O_CEDULA{ 
+        
+        REGISTRAR_POR_ID    ("[1] REGISTRAR POR ID"),
+        REGISTRAR_POR_CEDULA("[2] REGISTRAR POR CEDULA");
+        
+        private String valor;
+
+        private ID_O_CEDULA(String v) {
+            valor = v;
+        }
+        public String txt() {
+            return valor;
+        }
     }
 
 }

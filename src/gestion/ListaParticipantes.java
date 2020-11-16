@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestor;
+package gestion;
 
 import proyectomaraton.Participante;
 
@@ -73,5 +73,9 @@ public class ListaParticipantes {
         aux.siguiente = aux.siguiente.siguiente; 
         this.length --;
         return true; 
+    }
+    
+    boolean ordenar(){ 
+        
     }
 }
