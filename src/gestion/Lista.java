@@ -11,13 +11,13 @@ import proyectomaraton.Participante;
  *
  * @author carri
  */
-public class ListaParticipantes {
+public class Lista {
 
     Nodo primero;
     Nodo ultimo;
     int length;
 
-    public ListaParticipantes() {
+    public Lista() {
         this.primero = null;
     }
 
@@ -42,18 +42,18 @@ public class ListaParticipantes {
         return true;
     }
 
-    Participante iterar(int i) {
+    Object iterar(int i) {
         Nodo aux = this.primero;
         if (this.length < 1) {
             return null;
         }
         if (i == 0) {
-            return (Participante) (aux.dato);
+            return  aux.dato;
         }
         for (int j = 0; j < i; j++) {
             aux = aux.siguiente;
         }
-        return (Participante) (aux.dato);
+        return aux.dato;
     }
 
     public boolean borrar(int posicion) {
@@ -74,23 +74,23 @@ public class ListaParticipantes {
         this.length--;
         return true;
     }
-
+    /*
     public boolean ordenar() {
         for ( int i = 0; i < length-1; i++ ){
-            Nodo actual = this.primero;
-            while (actual.siguiente != null) {
-                if ( ((Participante)actual.dato).getHoraDeLlegada() > 
-                        ((Participante)actual.siguiente.dato).getHoraDeLlegada()) {
-                    Object data = actual.dato;
-                    actual.dato = actual.siguiente.dato;
-                    actual.siguiente.dato = data;
+            Nodo aux = this.primero;
+            while (aux.siguiente != null) {
+                if ( ((Participante)aux.dato).getHoraDeLlegada() > 
+                        ((Participante)aux.siguiente.dato).getHoraDeLlegada()) {
+                    Object data = aux.dato;
+                    aux.dato = aux.siguiente.dato;
+                    aux.siguiente.dato = data;
                 }
-                actual = actual.siguiente;
+                aux = aux.siguiente;
             }
         }
         return true;
     }
-
+    */
     public void imprimir() {
         Nodo aux = this.primero;
         while (aux != null) {

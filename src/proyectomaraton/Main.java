@@ -9,7 +9,7 @@ package proyectomaraton;
 
 import entradadedatos.Formularios;
 import gestion.Gestor;
-import gestion.ListaParticipantes;
+import gestion.Lista;
 import interfaz.MenuPrincipal;
 
 /**
@@ -24,41 +24,40 @@ public class Main {
     static Gestor g = Gestor.get_();
     public static void main(String[] args) {
         // TODO code application logic here
+        pruebas();
         /*
         while(true){ 
             MenuPrincipal.menuPrincipal();
         }
         */
         
-        //pruebas();
+        
         
        
     }
     
     public static void pruebas(){ 
-         ListaParticipantes l = new ListaParticipantes();
+        Lista l = new Lista();
         Participante p = new Participante("123","Richrad","Carrion",12,'M',"Nike",'A'); 
         Participante p2 = new Participante("456","Richrad","Carrion",12,'M',"Nike",'A'); 
         Participante p3 = new Participante("789","Richrad","Carrion",12,'M',"Nike",'A'); 
         Participante p4 = new Participante("159","Richrad","Carrion",12,'M',"Nike",'A'); 
         Participante p5 = new Participante("357","Richrad","Carrion",12,'M',"Nike",'A'); 
         
+        g.agregarParticipante("123","Richrad","Carrion",12,'M',"Nike");
+        g.agregarParticipante("456","Richrad","Carrion",12,'M',"Nike");
+        g.agregarParticipante("789","Richrad","Carrion",12,'M',"Nike");
+        g.agregarParticipante("1234","Richrad","Carrion",12,'M',"Nike");
         
         
-        l.add(p);
-        l.add(p2);
-        l.add(p3);
-        l.add(p4);
-        l.add(p5);
+        g.getParticipantePorCedula("123").setHoraLLegada(2);
+        g.getParticipantePorCedula("456").setHoraLLegada(3);
+        g.getParticipantePorCedula("789").setHoraLLegada(2);
+        g.getParticipantePorCedula("1234").setHoraLLegada(5);
         
-        p.setHoraLLegada(10);
-        p2.setHoraLLegada(5);
-        p3.setHoraLLegada(11);
-        p4.setHoraLLegada(2);
-        p5.setHoraLLegada(2);
+        g.finalizarMaraton();
         
-        l.ordenar();
-        l.imprimir();
+        g.imprimirListaParticipantes();
     }
     
 }

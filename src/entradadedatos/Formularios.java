@@ -21,7 +21,9 @@ public class Formularios {
         String apellido = Consola.ingresarDato(ENTRADAS.APELLIDO);
         int edad = Integer.parseInt(Consola.ingresarDato(ENTRADAS.EDAD));
         char sexo = Consola.ingresarDato(ENTRADAS.SEXO).charAt(0);
-        g.agregarParticipante(cedula, nombre, apellido, edad, sexo, apellido);
+        String auspiciantes = Consola.ingresarDato(ENTRADAS.AUSPICIANTES);
+        g.guardarAuspiciantes(auspiciantes);
+        g.agregarParticipante(cedula, nombre, apellido, edad, sexo, auspiciantes);
     }
 
     public static void visualizarParticipante() {
