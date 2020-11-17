@@ -31,7 +31,7 @@ public class Participante {
         return this.horaDeLlegada; 
     }
     
-    public void setHoraLLegada(int horaLlegada){ 
+    public void setHoraDeLlegada(int horaLlegada){ 
         this.horaDeLlegada = horaLlegada; 
     }
     
@@ -88,6 +88,10 @@ public class Participante {
 
     public char getCategoria() {
         return this.categoria; 
+    }
+
+    public String getAuspiciantes() {
+        return this.auspiciantes;
     }
     
 }

@@ -7,6 +7,7 @@ package interfaz;
 
 import entradadedatos.Consola;
 import entradadedatos.ENTRADAS;
+import entradadedatos.Formularios;
 import gestion.Gestor;
 
 /**
@@ -21,7 +22,7 @@ class MenuReportes {
             int opcion = seleccionarOpcionMenuReportes();
             switch (opcion) {
                 case 1:
-                    //reportesPorAuspiciante();
+                    reportesPorAuspiciante();
                     break;
                 case 2:
                     reportesPorCategoria();
@@ -38,17 +39,18 @@ class MenuReportes {
             }
         } while (volver == false);
     }
-    /*
+    
     private static void reportesPorAuspiciante() {
         int numOpciones = g.cantidadDeAuspiciantes();
         if (numOpciones > 0) {
-            int opcion = Formularios.reportePorAuspiciante(numOpciones);
-            g.reportePorAuspiciante(opcion);
-        } else {
-            System.out.println(Mensajes.NOTIF.LISTA_VACIA.txt());
-        }
+            g.imprimirListaAuspiciantes();
+            ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
+            int opcion = Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
+            g.imprimirParticipantesPorAuspiciante(opcion);
+        } 
+        
     }
-    */
+    
     private static void reportesPorCategoria() {
         int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_CATEGORIAS.values());
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
@@ -61,5 +63,5 @@ class MenuReportes {
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
         return Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
     }
-    
+
 }

@@ -13,8 +13,8 @@ import proyectomaraton.Participante;
  * @author carri
  */
 public class Gestor {
-    private Lista listaParticipantes;
-    private Lista listaAuspiciantes; 
+    private final Lista listaParticipantes;
+    private final Lista listaAuspiciantes; 
     private static Gestor instancia = null;
     private String estadoMaraton;  
     
@@ -92,6 +92,7 @@ public class Gestor {
         Participante p = new Participante(cedula, nombre, apellido, edad, sexo, auspiciantes, categoria);
         listaParticipantes.add(p);
         p.setId(listaParticipantes.length);
+        guardarAuspiciantes(auspiciantes);
     } 
     
     public void imprimirListaParticipantes(){ 
@@ -100,6 +101,8 @@ public class Gestor {
             System.out.println(listaParticipantes.iterar(i).toString());
         }
     }
+    
+    
 
     public void imprimirParticipantePorCedula(String cedula) {
         imprimirCabecera();
@@ -196,7 +199,7 @@ public class Gestor {
     
     private boolean existeAuspiciante(String auspiciante){ 
         for ( int i = 0; i < listaAuspiciantes.length; i++ ){ 
-            if( listaParticipantes.iterar(i).equals(auspiciante)){ 
+            if( ((String)listaAuspiciantes.iterar(i)).equals(auspiciante)){ 
                 return true; 
             }
         }
@@ -215,6 +218,30 @@ public class Gestor {
         } else if (!existeAuspiciante(auspiciantes)) {
                 listaAuspiciantes.add(auspiciantes);
             }
+    }
+
+    public int cantidadDeAuspiciantes() {
+        return listaAuspiciantes.length; 
+    }
+    
+    
+    public void imprimirParticipantesPorAuspiciante(int opcion){ 
+        imprimirCabecera();
+        String auspiciante = (String)listaAuspiciantes.iterar(opcion);
+        System.out.println(auspiciante);
+        for ( int i = 0; i < listaParticipantes.length; i++){
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( p.getAuspiciantes().equals(auspiciante)){
+                System.out.println(p.toString());
+            }
+        }
+    }
+
+   
+    public void imprimirListaAuspiciantes() {
+        for ( int i = 0; i < listaAuspiciantes.length; i++){ 
+            System.out.println("["+(i+1)+"] "+listaAuspiciantes.iterar(i).toString());
+        }
     }
 
     

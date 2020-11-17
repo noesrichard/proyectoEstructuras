@@ -17,11 +17,11 @@ public class Lista {
     Nodo ultimo;
     int length;
 
-    public Lista() {
+    Lista() {
         this.primero = null;
     }
 
-    public boolean add(Object dato) {
+    boolean add(Object dato) {
         Nodo nuevo;
         try {
             nuevo = new Nodo(dato);
@@ -54,7 +54,7 @@ public class Lista {
         return aux.dato;
     }
 
-    public boolean borrar(int posicion) {
+    boolean borrar(int posicion) {
         if (this.length == 1) {
             this.primero = null;
             this.length--;

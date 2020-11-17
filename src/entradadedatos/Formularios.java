@@ -22,7 +22,6 @@ public class Formularios {
         int edad = Integer.parseInt(Consola.ingresarDato(ENTRADAS.EDAD));
         char sexo = Consola.ingresarDato(ENTRADAS.SEXO).charAt(0);
         String auspiciantes = Consola.ingresarDato(ENTRADAS.AUSPICIANTES);
-        g.guardarAuspiciantes(auspiciantes);
         g.agregarParticipante(cedula, nombre, apellido, edad, sexo, auspiciantes);
     }
 
@@ -75,7 +74,7 @@ public class Formularios {
         String minutos = Consola.ingresarDato(ENTRADAS.MINUTOS);
         String segundos = Consola.ingresarDato(ENTRADAS.SEGUNDOS);
         int tiempo = Integer.parseInt(horas+minutos+segundos);
-        g.getParticipantePorId(id).setHoraLLegada(tiempo);
+        g.getParticipantePorId(id).setHoraDeLlegada(tiempo);
     }
     
     public static void registrarHoraDeLlegadaPorCedula() {
@@ -84,7 +83,7 @@ public class Formularios {
         String minutos = Consola.ingresarDato(ENTRADAS.MINUTOS);
         String segundos = Consola.ingresarDato(ENTRADAS.SEGUNDOS);
         int tiempo = Integer.parseInt(horas+minutos+segundos);
-        g.getParticipantePorCedula(cedula).setHoraLLegada(tiempo);
+        g.getParticipantePorCedula(cedula).setHoraDeLlegada(tiempo);
     }
 
     public static void registrarNoParticipePorId() {
@@ -97,6 +96,4 @@ public class Formularios {
        g.getParticipantePorCedula(cedula).noParticipo();
     }
 
-    
-    
 }
