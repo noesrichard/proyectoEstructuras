@@ -12,7 +12,7 @@ import validacion.Validador;
  *
  * @author carri
  */
-public enum ENTRADAS {
+enum ENTRADAS {
     NOMBRE          (MENSAJES.NOMBRE, REGEX.NOMBRE_APELLIDO.txt()),
     CEDULA_NUEVA    (MENSAJES.CEDULA,new Cedula()), 
     APELLIDO        (MENSAJES.APELLIDO, REGEX.NOMBRE_APELLIDO.txt()), 

@@ -62,9 +62,9 @@ public class Gestor {
             while (aux.siguiente != null) {
                 if ( ((Participante)aux.dato).getHoraDeLlegada() > 
                         ((Participante)aux.siguiente.dato).getHoraDeLlegada()) {
-                    Object data = aux.dato;
+                    Object tempo = aux.dato;
                     aux.dato = aux.siguiente.dato;
-                    aux.siguiente.dato = data;
+                    aux.siguiente.dato = tempo;
                 }
                 aux = aux.siguiente;
             }
@@ -73,9 +73,7 @@ public class Gestor {
     }
     
     private char determinarCategoria(int edad){ 
-        int EDAD_A = 1;
-        int EDAD_B = 18;
-        int EDAD_C = 35;
+        int EDAD_A = 1, EDAD_B = 18, EDAD_C = 35;
         if ( edad >= EDAD_A && edad < EDAD_B ){ 
             return 'A';
         } else if( edad >= EDAD_B && edad < EDAD_C ){ 
@@ -102,8 +100,6 @@ public class Gestor {
         }
     }
     
-    
-
     public void imprimirParticipantePorCedula(String cedula) {
         imprimirCabecera();
         for ( int i = 0; i < listaParticipantes.length; i++){

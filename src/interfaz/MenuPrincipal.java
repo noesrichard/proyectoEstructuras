@@ -19,7 +19,7 @@ public class MenuPrincipal {
     static Gestor g = Gestor.get_();
 
     public static boolean menuPrincipal() {
-        int opcion = seleccionarOpcionMenuPrincipal();
+        int opcion = Formularios.seleccionarOpcionMenuPrincipal();
         switch (opcion) {
             case 1:
                 opcionUno();
@@ -42,7 +42,7 @@ public class MenuPrincipal {
                 MenuParticipante.menu();
                 break;
             case "Iniciado":
-                menuRegistrarHoraDeLlegada();
+                Formularios.menuRegistrarHoraDeLlegada();
                 break;
             case "Finalizado":
                 MenuReportes.menu();
@@ -58,7 +58,7 @@ public class MenuPrincipal {
                 g.iniciarMaraton();
                 break;
             case "Iniciado":
-                menuRegistrarNoParticipe(); 
+                Formularios.menuRegistrarNoParticipe(); 
                 break;
             default:
                 break;
@@ -71,13 +71,9 @@ public class MenuPrincipal {
         }
     }
 
-    private static int seleccionarOpcionMenuPrincipal() {
-        int numOpciones = imprimirMenuPrincipal();
-        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
-    }
     
-    private static int imprimirMenuPrincipal(){ 
+    
+    public static int imprimirMenuPrincipal(){ 
         int numOpciones = 0;
         System.out.println("\n");
         System.out.println(Mensajes.MENU_PRINCIPAL.CABEZERA.txt());
@@ -103,34 +99,5 @@ public class MenuPrincipal {
     }
     
     
-    private static void menuRegistrarNoParticipe() {
-        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
-        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
-        ENTRADAS.MENU.setNumeroDeOpcionesMenu(2);
-        String opcion = Consola.ingresarDato(ENTRADAS.MENU);
-        switch(opcion){ 
-            case "1": 
-                Formularios.registrarNoParticipePorId();
-                break; 
-            case "2": 
-                Formularios.registrarNoParticipePorCedula();
-                break;
-        }
-    }
     
-    
-    private static void menuRegistrarHoraDeLlegada(){ 
-        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
-        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
-        ENTRADAS.MENU.setNumeroDeOpcionesMenu(2);
-        String opcion = Consola.ingresarDato(ENTRADAS.MENU);
-        switch(opcion){ 
-            case "1":
-                Formularios.registrarHoraDeLlegadaPorId();
-                break;
-            case "2": 
-                Formularios.registrarHoraDeLlegadaPorCedula();
-                break; 
-        }
-    }
 }

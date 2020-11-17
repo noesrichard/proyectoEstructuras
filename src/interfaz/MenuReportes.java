@@ -19,13 +19,13 @@ class MenuReportes {
     static void menu() {
         boolean volver = false;
         do {
-            int opcion = seleccionarOpcionMenuReportes();
+            int opcion = Formularios.seleccionarOpcionMenuReportes();
             switch (opcion) {
                 case 1:
-                    reportesPorAuspiciante();
+                    Formularios.reportesPorAuspiciante();
                     break;
                 case 2:
-                    reportesPorCategoria();
+                    Formularios.reportesPorCategoria();
                     break;
                 case 3:
                     g.imprimirNoParticipes();
@@ -40,28 +40,10 @@ class MenuReportes {
         } while (volver == false);
     }
     
-    private static void reportesPorAuspiciante() {
-        int numOpciones = g.cantidadDeAuspiciantes();
-        if (numOpciones > 0) {
-            g.imprimirListaAuspiciantes();
-            ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
-            int opcion = Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
-            g.imprimirParticipantesPorAuspiciante(opcion);
-        } 
-        
-    }
     
-    private static void reportesPorCategoria() {
-        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_CATEGORIAS.values());
-        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        int opcion = Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
-        g.reportePorCategoria(opcion);
-    }
     
-    public static int seleccionarOpcionMenuReportes() {
-        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_REPORTES.values());
-        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
-    }
+    
+    
+    
 
 }

@@ -6,6 +6,8 @@
 package entradadedatos;
 
 import gestion.Gestor;
+import interfaz.Mensajes;
+import interfaz.MenuPrincipal;
 import main.Participante;
 
 /**
@@ -95,5 +97,85 @@ public class Formularios {
        String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_EXISTENTE);
        g.getParticipantePorCedula(cedula).noParticipo();
     }
-
+    
+    public static String seleccionarOpcionMenuParticipantes() {
+        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_PARTICIPANTE.values());
+        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
+        return Consola.ingresarDato(ENTRADAS.MENU);
+    }
+    public static String seleccionarOpcionMenuActualizar() {
+        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_ACTUALIZAR.values());
+        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
+        return Consola.ingresarDato(ENTRADAS.MENU);
+    }
+    public static int seleccionarOpcionMenuPrincipal() {
+        int numOpciones = MenuPrincipal.imprimirMenuPrincipal();
+        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
+        return Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
+    }
+    
+    public static void menuRegistrarNoParticipe() {
+        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
+        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
+        ENTRADAS.MENU.setNumeroDeOpcionesMenu(2);
+        String opcion = Consola.ingresarDato(ENTRADAS.MENU);
+        switch(opcion){ 
+            case "1": 
+                registrarNoParticipePorId();
+                break; 
+            case "2": 
+                registrarNoParticipePorCedula();
+                break;
+        }
+    }
+    
+    
+    public static void menuRegistrarHoraDeLlegada(){ 
+        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
+        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
+        ENTRADAS.MENU.setNumeroDeOpcionesMenu(2);
+        String opcion = Consola.ingresarDato(ENTRADAS.MENU);
+        switch(opcion){ 
+            case "1":
+                registrarHoraDeLlegadaPorId();
+                break;
+            case "2": 
+                registrarHoraDeLlegadaPorCedula();
+                break; 
+        }
+    }
+    
+    public static void reportesPorAuspiciante() {
+        int numOpciones = g.cantidadDeAuspiciantes();
+        if (numOpciones > 0) {
+            g.imprimirListaAuspiciantes();
+            ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
+            int opcion = Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
+            g.imprimirParticipantesPorAuspiciante(opcion);
+        } 
+        
+    }
+    
+    public static void reportesPorCategoria() {
+        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_CATEGORIAS.values());
+        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
+        int opcion = Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
+        switch (opcion) {
+            case 1: 
+                g.imprimirPorCategoria('A');
+                break;
+            case 2: 
+                g.imprimirPorCategoria('B');
+                break; 
+            case 3: 
+                g.imprimirPorCategoria('C');
+                break;
+        }
+    }
+    
+    public static int seleccionarOpcionMenuReportes() {
+        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_REPORTES.values());
+        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
+        return Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
+    }
 }

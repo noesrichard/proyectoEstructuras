@@ -20,7 +20,7 @@ class MenuParticipante {
     static void menu() {
         boolean volver = false;
         do {
-            String opcion = seleccionarOpcionMenuParticipantes();
+            String opcion = Formularios.seleccionarOpcionMenuParticipantes();
             switch (opcion) {
                 case "1":
                     Formularios.agregarParticipante();
@@ -45,7 +45,7 @@ class MenuParticipante {
         Participante participante = Formularios.getParticipantePorCedula();
         do {            
             if (participante != null) {
-                String opcion = seleccionarOpcionMenuActualizar(); 
+                String opcion = Formularios.seleccionarOpcionMenuActualizar(); 
                 switch (opcion) {
                     case "1":
                         Formularios.actualizarNombre(participante);
@@ -67,16 +67,4 @@ class MenuParticipante {
         } while (volver == false);
     }
     
-    public static String seleccionarOpcionMenuParticipantes() {
-        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_PARTICIPANTE.values());
-        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Consola.ingresarDato(ENTRADAS.MENU);
-    }
-    
-    
-    public static String seleccionarOpcionMenuActualizar() {
-        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_ACTUALIZAR.values());
-        ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Consola.ingresarDato(ENTRADAS.MENU);
-    }
 }

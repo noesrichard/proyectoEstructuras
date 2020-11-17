@@ -9,14 +9,14 @@ package interfaz;
  *
  * @author carri
  */
-class Mensajes {
+public class Mensajes {
 
     private interface MENSAJES_MENUS {
 
         public String txt();
     }
 
-    enum MENU_PRINCIPAL implements MENSAJES_MENUS {
+    public enum MENU_PRINCIPAL implements MENSAJES_MENUS {
         CABEZERA                ("***********    MENU PRINCIPAL **********"),
         MENU_PARTICIPANTES      ("[1] MENU PARTICIPANTES "),
         SALIDA                  ("[2] DAR SALIDA AL MARATON "),
@@ -39,7 +39,7 @@ class Mensajes {
         }
     }
 
-    enum MENU_PARTICIPANTE implements MENSAJES_MENUS {
+    public enum MENU_PARTICIPANTE implements MENSAJES_MENUS {
 
         CABEZERA    ("******* MENU PARTICIPANTE ********"),
         CREAR       ("[1] CREAR PARTICIPANTE"),
@@ -60,7 +60,7 @@ class Mensajes {
         }
     }
 
-    enum MENU_ACTUALIZAR implements MENSAJES_MENUS {
+    public enum MENU_ACTUALIZAR implements MENSAJES_MENUS {
         CABEZERA("******MENU PARA ACTUALIZAR A UN PARTICIPANTE*******"),
         OPCION_1("[1] ACTULIZAR NOMBRE"),
         OPCION_2("[2] ACTUALIZAR APELLIDO"),
@@ -81,7 +81,7 @@ class Mensajes {
         }
     }
 
-    enum MENU_REPORTES implements MENSAJES_MENUS {
+    public enum MENU_REPORTES implements MENSAJES_MENUS {
         CABEZERA("******MENU PARA ACTUALIZAR A UN PARTICIPANTE*******"),
         OPCION_1("[1] PARTICIPANTES POR AUSPICIANTE"),
         OPCION_2("[2] PARTICIPANTES POR CATEGORIA EN ORDEN DE LLEGADA "),
@@ -102,7 +102,7 @@ class Mensajes {
 
     }
 
-    enum MENU_CATEGORIAS implements MENSAJES_MENUS {
+    public enum MENU_CATEGORIAS implements MENSAJES_MENUS {
         CABEZERA("*********CATEGORIAS************"),
         A       ("[1] CATEGORIA A"),
         B       ("[2] CATEGORIA B"),
@@ -119,7 +119,7 @@ class Mensajes {
         }
     }
 
-    static int imprimirMenu(MENSAJES_MENUS[] menu) {
+    public static int imprimirMenu(MENSAJES_MENUS[] menu) {
         int numOpciones = 0;
         for (MENSAJES_MENUS mensaje : menu) {
             System.out.println(mensaje.txt());
@@ -128,7 +128,7 @@ class Mensajes {
         return numOpciones;
     }   
     
-    enum ID_O_CEDULA{ 
+    public enum ID_O_CEDULA{ 
         
         REGISTRAR_POR_ID    ("[1] REGISTRAR POR ID"),
         REGISTRAR_POR_CEDULA("[2] REGISTRAR POR CEDULA");
