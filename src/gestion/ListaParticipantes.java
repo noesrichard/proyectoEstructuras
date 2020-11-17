@@ -16,11 +16,11 @@ public class ListaParticipantes {
     Nodo ultimo;
     int length; 
     
-    ListaParticipantes(){ 
+    public ListaParticipantes(){ 
         this.primero = null;
     }
     
-    boolean add(Object dato){ 
+    public boolean add(Object dato){ 
         Nodo nuevo; 
         try{ 
             nuevo = new Nodo(dato);
@@ -31,13 +31,13 @@ public class ListaParticipantes {
             this.primero = nuevo; 
             this.ultimo = nuevo; 
             this.length = 1;
-            ((Participante)(nuevo.dato)).setId(length);
+            //((Participante)(nuevo.dato)).setId(length);
             return true; 
         }
         this.ultimo.siguiente = nuevo; 
         this.ultimo = this.ultimo.siguiente;
         this.length ++;
-        ((Participante)(nuevo.dato)).setId(length);
+        //((Participante)(nuevo.dato)).setId(length);
         return true; 
     }
     
@@ -55,7 +55,7 @@ public class ListaParticipantes {
         return (Participante)(aux.dato); 
     }
     
-    boolean borrar(int posicion){
+    public boolean borrar(int posicion){
         if ( this.length == 1 ){ 
             this.primero = null;
             this.length --;
@@ -75,7 +75,29 @@ public class ListaParticipantes {
         return true; 
     }
     
-    boolean ordenar(){ 
+    public boolean ordenar(){ 
+        Nodo pivote = this.primero;
+        while( pivote.siguiente != null ){
+            Nodo aux = this.primero; 
+            while( aux.siguiente != null ){ 
+                if ( (int)(pivote.dato) < (int)(aux.dato) ){ 
+                    Object tempo = aux.dato; 
+                    aux.dato = pivote.dato; 
+                    pivote.dato = tempo; 
+                }
+                aux = aux.siguiente; 
+            }
+            pivote = pivote.siguiente;
+        }
         
+        return true; 
+    }
+    
+    public void imprimir(){ 
+        Nodo aux = this.primero; 
+        while ( aux != this.ultimo ){ 
+            System.out.println(aux.dato.toString());
+            aux = aux.siguiente; 
+        }
     }
 }
