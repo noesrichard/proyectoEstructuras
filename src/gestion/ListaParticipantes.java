@@ -12,92 +12,90 @@ import proyectomaraton.Participante;
  * @author carri
  */
 public class ListaParticipantes {
+
     Nodo primero;
     Nodo ultimo;
-    int length; 
-    
-    public ListaParticipantes(){ 
+    int length;
+
+    public ListaParticipantes() {
         this.primero = null;
     }
-    
-    public boolean add(Object dato){ 
-        Nodo nuevo; 
-        try{ 
+
+    public boolean add(Object dato) {
+        Nodo nuevo;
+        try {
             nuevo = new Nodo(dato);
-        }catch(Exception e ){ 
-            return false; 
+        } catch (Exception e) {
+            return false;
         }
-        if ( this.primero == null ){ 
-            this.primero = nuevo; 
-            this.ultimo = nuevo; 
+        if (this.primero == null) {
+            this.primero = nuevo;
+            this.ultimo = nuevo;
             this.length = 1;
             //((Participante)(nuevo.dato)).setId(length);
-            return true; 
+            return true;
         }
-        this.ultimo.siguiente = nuevo; 
+        this.ultimo.siguiente = nuevo;
         this.ultimo = this.ultimo.siguiente;
-        this.length ++;
+        this.length++;
         //((Participante)(nuevo.dato)).setId(length);
-        return true; 
+        return true;
     }
-    
-    Participante iterar(int i){ 
-        Nodo aux = this.primero; 
-        if ( this.length < 1 ){ 
-            return null; 
+
+    Participante iterar(int i) {
+        Nodo aux = this.primero;
+        if (this.length < 1) {
+            return null;
         }
-        if ( i == 0 ){ 
-            return (Participante)(aux.dato); 
+        if (i == 0) {
+            return (Participante) (aux.dato);
         }
-        for ( int j = 0; j < i; j++){ 
-            aux = aux.siguiente; 
+        for (int j = 0; j < i; j++) {
+            aux = aux.siguiente;
         }
-        return (Participante)(aux.dato); 
+        return (Participante) (aux.dato);
     }
-    
-    public boolean borrar(int posicion){
-        if ( this.length == 1 ){ 
+
+    public boolean borrar(int posicion) {
+        if (this.length == 1) {
             this.primero = null;
-            this.length --;
-            return true; 
+            this.length--;
+            return true;
+        } else if (posicion == 0) {
+            this.primero = this.primero.siguiente;
+            this.length--;
+            return true;
         }
-        else if ( posicion == 0 ){ 
-            this.primero = this.primero.siguiente; 
-            this.length --;
-            return true; 
+        Nodo aux = this.primero;
+        for (int i = 1; i < posicion; i++) {
+            aux = aux.siguiente;
         }
-        Nodo aux = this.primero; 
-        for ( int i = 1; i < posicion ; i++){ 
-            aux  = aux.siguiente; 
-        }
-        aux.siguiente = aux.siguiente.siguiente; 
-        this.length --;
-        return true; 
+        aux.siguiente = aux.siguiente.siguiente;
+        this.length--;
+        return true;
     }
-    
-    public boolean ordenar(){ 
-        Nodo pivote = this.primero;
-        while( pivote.siguiente != null ){
-            Nodo aux = this.primero; 
-            while( aux.siguiente != null ){ 
-                if ( (int)(pivote.dato) < (int)(aux.dato) ){ 
-                    Object tempo = aux.dato; 
-                    aux.dato = pivote.dato; 
-                    pivote.dato = tempo; 
+
+    public boolean ordenar() {
+        for ( int i = 0; i < length-1; i++ ){
+            Nodo actual = this.primero;
+            while (actual.siguiente != null) {
+                if ( ((Participante)actual.dato).getHoraDeLlegada() > 
+                        ((Participante)actual.siguiente.dato).getHoraDeLlegada()) {
+                    Object data = actual.dato;
+                    actual.dato = actual.siguiente.dato;
+                    actual.siguiente.dato = data;
                 }
-                aux = aux.siguiente; 
+                actual = actual.siguiente;
             }
-            pivote = pivote.siguiente;
         }
-        
-        return true; 
+        return true;
     }
-    
-    public void imprimir(){ 
-        Nodo aux = this.primero; 
-        while ( aux != this.ultimo ){ 
+
+    public void imprimir() {
+        Nodo aux = this.primero;
+        while (aux != null) {
             System.out.println(aux.dato.toString());
-            aux = aux.siguiente; 
+            aux = aux.siguiente;
         }
     }
 }
