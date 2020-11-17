@@ -6,7 +6,7 @@
 package gestion;
 
 
-import proyectomaraton.Participante;
+import main.Participante;
 
 /**
  *

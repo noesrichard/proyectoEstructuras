@@ -6,7 +6,7 @@
 package entradadedatos;
 
 import gestion.Gestor;
-import proyectomaraton.Participante;
+import main.Participante;
 
 /**
  *

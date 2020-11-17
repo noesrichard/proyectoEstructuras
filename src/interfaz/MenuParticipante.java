@@ -9,7 +9,7 @@ import entradadedatos.Consola;
 import entradadedatos.ENTRADAS;
 import entradadedatos.Formularios;
 import gestion.Gestor;
-import proyectomaraton.Participante;
+import main.Participante;
 
 /**
  *
