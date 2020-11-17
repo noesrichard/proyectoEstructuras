@@ -5,8 +5,6 @@
  */
 package interfaz;
 
-import entradadedatos.Consola;
-import entradadedatos.ENTRADAS;
 import entradadedatos.Formularios;
 import gestion.Gestor;
 

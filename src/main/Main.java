@@ -26,9 +26,9 @@ public class Main {
         // TODO code application logic here
         pruebas();
         /*
-        while(true){ 
-            MenuPrincipal.menuPrincipal();
-        }
+        do{ 
+            repetir = MenuPrincipal.menuPrincipal();
+        }while ( repetir == true);
         */
         
         

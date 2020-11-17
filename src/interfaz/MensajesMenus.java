@@ -9,7 +9,7 @@ package interfaz;
  *
  * @author carri
  */
-public class Mensajes {
+public class MensajesMenus {
 
     private interface MENSAJES_MENUS {
 
@@ -119,14 +119,7 @@ public class Mensajes {
         }
     }
 
-    public static int imprimirMenu(MENSAJES_MENUS[] menu) {
-        int numOpciones = 0;
-        for (MENSAJES_MENUS mensaje : menu) {
-            System.out.println(mensaje.txt());
-            numOpciones++;
-        }
-        return numOpciones;
-    }   
+     
     
     public enum ID_O_CEDULA{ 
         
@@ -142,5 +135,14 @@ public class Mensajes {
             return valor;
         }
     }
+    
+    public static int imprimirMenu(MENSAJES_MENUS[] menu) {
+        int numOpciones = 0;
+        for (MENSAJES_MENUS mensaje : menu) {
+            System.out.println(mensaje.txt());
+            numOpciones++;
+        }
+        return numOpciones;
+    }  
 
 }

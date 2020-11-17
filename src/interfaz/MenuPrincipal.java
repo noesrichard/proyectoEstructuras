@@ -5,8 +5,7 @@
  */
 package interfaz;
 
-import entradadedatos.Consola;
-import entradadedatos.ENTRADAS;
+
 import entradadedatos.Formularios;
 import gestion.Gestor;
 
@@ -19,21 +18,21 @@ public class MenuPrincipal {
     static Gestor g = Gestor.get_();
 
     public static boolean menuPrincipal() {
-        int opcion = Formularios.seleccionarOpcionMenuPrincipal();
+        String opcion = Formularios.seleccionarOpcionMenuPrincipal();
         switch (opcion) {
-            case 1:
+            case "1":
                 opcionUno();
                 break;
-            case 2:
+            case "2":
                 opcionDos();
                 break;
-            case 3:
+            case "3":
                 opcionTres();
                 break;
-            case 0:
-                return true;
+            case "0":
+                return false;
         }
-        return false;
+        return true;
     }
 
     private static void opcionUno() {
@@ -76,25 +75,25 @@ public class MenuPrincipal {
     public static int imprimirMenuPrincipal(){ 
         int numOpciones = 0;
         System.out.println("\n");
-        System.out.println(Mensajes.MENU_PRINCIPAL.CABEZERA.txt());
+        System.out.println(MensajesMenus.MENU_PRINCIPAL.CABEZERA.txt());
         switch (g.getEstadoMaraton()) {
             case "":
-                System.out.println(Mensajes.MENU_PRINCIPAL.MENU_PARTICIPANTES.txt());
-                System.out.println(Mensajes.MENU_PRINCIPAL.SALIDA.txt());
+                System.out.println(MensajesMenus.MENU_PRINCIPAL.MENU_PARTICIPANTES.txt());
+                System.out.println(MensajesMenus.MENU_PRINCIPAL.SALIDA.txt());
                 numOpciones = 2;
                 break;
             case "Iniciado":
-                System.out.println(Mensajes.MENU_PRINCIPAL.REGISTRAR_HORA.txt());
-                System.out.println(Mensajes.MENU_PRINCIPAL.REGISTRAR_NO_PARTICIPES.txt());
-                System.out.println(Mensajes.MENU_PRINCIPAL.FINALIZAR.txt());
+                System.out.println(MensajesMenus.MENU_PRINCIPAL.REGISTRAR_HORA.txt());
+                System.out.println(MensajesMenus.MENU_PRINCIPAL.REGISTRAR_NO_PARTICIPES.txt());
+                System.out.println(MensajesMenus.MENU_PRINCIPAL.FINALIZAR.txt());
                 numOpciones = 3;
                 break;
             case "Finalizado":
-                System.out.println(Mensajes.MENU_PRINCIPAL.VER_REPORTES.txt());
+                System.out.println(MensajesMenus.MENU_PRINCIPAL.VER_REPORTES.txt());
                 numOpciones = 1;
                 break;
         }
-        System.out.println(Mensajes.MENU_PRINCIPAL.SALIR.txt());
+        System.out.println(MensajesMenus.MENU_PRINCIPAL.SALIR.txt());
         return numOpciones; 
     }
     

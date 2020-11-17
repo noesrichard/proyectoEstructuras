@@ -6,13 +6,18 @@
 package entradadedatos;
 
 import gestion.Gestor;
-import interfaz.Mensajes;
+import interfaz.MensajesMenus;
 import interfaz.MenuPrincipal;
 import main.Participante;
 
 /**
  *
  * @author carri
+ * 
+ * Los formularios se componen por uno o varios campos o entradas 
+ * que deben ser completadas por el usuario y estos envian los datos
+ * recolectados al gestor. 
+ * 
  */
 public class Formularios {
     static Gestor g = Gestor.get_();
@@ -99,24 +104,24 @@ public class Formularios {
     }
     
     public static String seleccionarOpcionMenuParticipantes() {
-        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_PARTICIPANTE.values());
+        int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_PARTICIPANTE.values());
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
         return Consola.ingresarDato(ENTRADAS.MENU);
     }
     public static String seleccionarOpcionMenuActualizar() {
-        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_ACTUALIZAR.values());
+        int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_ACTUALIZAR.values());
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
         return Consola.ingresarDato(ENTRADAS.MENU);
     }
-    public static int seleccionarOpcionMenuPrincipal() {
+    public static String seleccionarOpcionMenuPrincipal() {
         int numOpciones = MenuPrincipal.imprimirMenuPrincipal();
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
+        return Consola.ingresarDato(ENTRADAS.MENU);
     }
     
     public static void menuRegistrarNoParticipe() {
-        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
-        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
+        System.out.println(MensajesMenus.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
+        System.out.println(MensajesMenus.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(2);
         String opcion = Consola.ingresarDato(ENTRADAS.MENU);
         switch(opcion){ 
@@ -131,8 +136,8 @@ public class Formularios {
     
     
     public static void menuRegistrarHoraDeLlegada(){ 
-        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
-        System.out.println(Mensajes.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
+        System.out.println(MensajesMenus.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
+        System.out.println(MensajesMenus.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(2);
         String opcion = Consola.ingresarDato(ENTRADAS.MENU);
         switch(opcion){ 
@@ -157,24 +162,24 @@ public class Formularios {
     }
     
     public static void reportesPorCategoria() {
-        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_CATEGORIAS.values());
+        int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_CATEGORIAS.values());
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        int opcion = Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
+        String opcion = Consola.ingresarDato(ENTRADAS.MENU);
         switch (opcion) {
-            case 1: 
+            case "1": 
                 g.imprimirPorCategoria('A');
                 break;
-            case 2: 
+            case "2": 
                 g.imprimirPorCategoria('B');
                 break; 
-            case 3: 
+            case "3": 
                 g.imprimirPorCategoria('C');
                 break;
         }
     }
     
     public static int seleccionarOpcionMenuReportes() {
-        int numOpciones = Mensajes.imprimirMenu(Mensajes.MENU_REPORTES.values());
+        int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_REPORTES.values());
         ENTRADAS.MENU.setNumeroDeOpcionesMenu(numOpciones);
         return Integer.parseInt(Consola.ingresarDato(ENTRADAS.MENU));
     }
