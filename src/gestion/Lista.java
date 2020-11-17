@@ -32,13 +32,11 @@ public class Lista {
             this.primero = nuevo;
             this.ultimo = nuevo;
             this.length = 1;
-            //((Participante)(nuevo.dato)).setId(length);
             return true;
         }
         this.ultimo.siguiente = nuevo;
         this.ultimo = this.ultimo.siguiente;
         this.length++;
-        //((Participante)(nuevo.dato)).setId(length);
         return true;
     }
 
@@ -74,23 +72,7 @@ public class Lista {
         this.length--;
         return true;
     }
-    /*
-    public boolean ordenar() {
-        for ( int i = 0; i < length-1; i++ ){
-            Nodo aux = this.primero;
-            while (aux.siguiente != null) {
-                if ( ((Participante)aux.dato).getHoraDeLlegada() > 
-                        ((Participante)aux.siguiente.dato).getHoraDeLlegada()) {
-                    Object data = aux.dato;
-                    aux.dato = aux.siguiente.dato;
-                    aux.siguiente.dato = data;
-                }
-                aux = aux.siguiente;
-            }
-        }
-        return true;
-    }
-    */
+   
     public void imprimir() {
         Nodo aux = this.primero;
         while (aux != null) {

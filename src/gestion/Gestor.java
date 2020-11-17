@@ -86,11 +86,12 @@ public class Gestor {
         return 'N';
     }
     
-    public boolean agregarParticipante(String cedula,String nombre,String apellido,
+    public void agregarParticipante(String cedula,String nombre,String apellido,
                                     int edad, char sexo,String auspiciantes){
         char categoria = determinarCategoria(edad);
-        return listaParticipantes.add(new Participante(cedula,nombre,
-                apellido, edad, sexo, auspiciantes, categoria));
+        Participante p = new Participante(cedula, nombre, apellido, edad, sexo, auspiciantes, categoria);
+        listaParticipantes.add(p);
+        p.setId(listaParticipantes.length);
     } 
     
     public void imprimirListaParticipantes(){ 
