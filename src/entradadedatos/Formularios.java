@@ -25,10 +25,10 @@ public class Formularios {
     public static void agregarParticipante(){ 
         String cedula = Consola.ingresarDato(ENTRADAS.CEDULA_NUEVA);
         if ( !cedula.equals("0") ){ 
-            String nombre = Consola.ingresarDato(ENTRADAS.NOMBRE);
-            String apellido = Consola.ingresarDato(ENTRADAS.APELLIDO);
-            int edad = Integer.parseInt(Consola.ingresarDato(ENTRADAS.EDAD));
-            char sexo = Consola.ingresarDato(ENTRADAS.SEXO).charAt(0);
+            String nombre       = Consola.ingresarDato(ENTRADAS.NOMBRE);
+            String apellido     = Consola.ingresarDato(ENTRADAS.APELLIDO);
+            int edad            = Integer.parseInt(Consola.ingresarDato(ENTRADAS.EDAD));
+            char sexo           = Consola.ingresarDato(ENTRADAS.SEXO).charAt(0);
             String auspiciantes = Consola.ingresarDato(ENTRADAS.AUSPICIANTES);
             g.agregarParticipante(cedula, nombre, apellido, edad, sexo, auspiciantes); 
         } 
