@@ -243,5 +243,16 @@ public class Gestor {
         }
     }
 
+    public void imprimirParticipante(Participante participante) {
+        for ( int i = 0; i< listaParticipantes.length; i++ ){ 
+            Participante p = (Participante)listaParticipantes.iterar(i); 
+            if ( p == participante ){ 
+                System.out.println(p.toString());
+            }
+        }
+    }
+
+    
+
     
 }

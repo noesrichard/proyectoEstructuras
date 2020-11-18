@@ -5,18 +5,75 @@
  */
 package validacion;
 
+import gestion.Gestor;
+
 /**
  *
  * @author carri
  */
 public class Cedula implements Validador{
 
+    public static final int CEDULA_NUEVA = 1, CEDULA_EXISTENTE = 2;
+    private String regex;
+    private int opcion;
+
+    public Cedula(int opcion) {
+        this.opcion = opcion;
+        this.regex = "[0-9]+";
+    }
+
     @Override
-    public String validar(String dato) {
-        if( dato.matches("[0-9]+")){
-            return dato; 
+    public String validar(String cedula) {
+        Gestor g = Gestor.get_();
+        switch (this.opcion) {
+            case CEDULA_NUEVA:
+                if (validarCedula(cedula)) {
+                    /*
+                     *Si existe un participante con esa cedula retorna 
+                     *falso ya que quiero ingresar una nueva cedula.
+                     */
+                    return ( g.getParticipantePorCedula(cedula) == null )? cedula: null;
+                }
+                return null;
+            case CEDULA_EXISTENTE:
+                if (validarCedula(cedula)) {
+                    /*
+                     *Si existe un participante con esa cedula retorna verdadero
+                     *ya que quiero validar que esa cedula existe.
+                     */
+                    return ( g.getParticipantePorCedula(cedula) == null )? null: cedula;
+                }
+                return null;
+
         }
-        return null; 
+        return null;
+    }
+
+    public static boolean validarCedula(String dato) {
+        int indiceNumeros = 0;
+        int auxSeparador = 1, multiplicador = 2, acumulador = 0, multiplicacion, ultimoDigito;
+        if (dato.length() == 10) {
+            while (indiceNumeros < 9) {
+                if (multiplicador == 2) {
+                    multiplicacion = 2 * Integer.parseInt(dato.substring(indiceNumeros, auxSeparador));
+                    if (multiplicacion >= 10) {
+                        acumulador = acumulador + multiplicacion - 9;
+                    } else {
+                        acumulador = acumulador + multiplicacion;
+                    }
+                    multiplicador = 1;
+                } else {
+                    acumulador = acumulador + (Integer.parseInt(dato.substring(indiceNumeros, auxSeparador)));
+                    multiplicador = 2;
+                }
+                indiceNumeros++;
+                auxSeparador++;
+            }
+            ultimoDigito = Integer.parseInt(dato.substring(9, 10));
+            return (acumulador + ultimoDigito) % 10 == 0;
+        } else {
+            return false;
+        }
     }
     
 }

@@ -42,20 +42,25 @@ class MenuParticipante {
     private static void menuActualizarParticipante() {
         boolean volver = false;
         Participante participante = Formularios.getParticipantePorCedula();
-        do {            
+        do {
             if (participante != null) {
                 String opcion = Formularios.seleccionarOpcionMenuActualizar(); 
                 switch (opcion) {
                     case "1":
                         Formularios.actualizarNombre(participante);
+                        break;
                     case "2":
                         Formularios.actualizarApellido(participante);
+                        break;
                     case "3":
                         Formularios.actualizarAuspiciantes(participante);
+                        break;
                     case "4":
                         Formularios.actualizarEdad(participante);
+                        break;
                     case "5":
                         Formularios.actualizarSexo(participante);
+                        break;
                     case "6":
                         volver = true;
                         break;
