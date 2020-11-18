@@ -187,7 +187,7 @@ public class Gestor {
         imprimirCabecera();
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getHoraDeLlegada() == 0 ){
+            if ( p.getHoraDeLlegada() == 0 && p.getParticipo()){
                 System.out.println(p.toString());
             }
         }
@@ -227,7 +227,7 @@ public class Gestor {
         System.out.println(auspiciante);
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getAuspiciantes().equals(auspiciante)){
+            if ( p.getAuspiciantes().contains(auspiciante)){
                 System.out.println(p.toString());
             }
         }

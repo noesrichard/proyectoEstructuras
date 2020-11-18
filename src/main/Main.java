@@ -7,9 +7,9 @@ package main;
 
 
 
-import entradadedatos.Formularios;
+
 import gestion.Gestor;
-import gestion.Lista;
+
 import interfaz.MenuPrincipal;
 
 /**
@@ -22,18 +22,14 @@ public class Main {
      * @param args the command line arguments
      */
     static Gestor g = Gestor.get_();
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        boolean repetir = true;
         pruebas();
-        /*
         do{ 
             repetir = MenuPrincipal.menuPrincipal();
         }while ( repetir == true);
-        */
-        
-        
-        
-       
+     
     }
     
     public static void pruebas(){ 
@@ -46,12 +42,12 @@ public class Main {
         g.agregarParticipante("1234","Richrad","Carrion",12,'M',"Nike");
         
         
-        g.getParticipantePorCedula("123").setHoraDeLlegada(2);
-        g.getParticipantePorCedula("456").setHoraDeLlegada(3);
+     
+        g.getParticipantePorCedula("456");
         g.getParticipantePorCedula("789").setHoraDeLlegada(2);
         g.getParticipantePorCedula("1234").setHoraDeLlegada(5);
-        
-        g.finalizarMaraton();
+        g.getParticipantePorCedula("123").noParticipo();
+        //g.finalizarMaraton();
         g.imprimirListaAuspiciantes();
        
         g.imprimirParticipantesPorAuspiciante(1);
