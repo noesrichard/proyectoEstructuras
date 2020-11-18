@@ -230,7 +230,7 @@ public class Gestor {
         String auspiciante = (String)listaAuspiciantes.iterar(opcion);
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getAuspiciantes().contains(auspiciante)){
+            if ( p.getAuspiciantes().contains(auspiciante) && p.getHoraDeLlegada() != 0){
                 System.out.println(p.toString());
             }
         }

@@ -110,7 +110,7 @@ public class GestorTest {
         String apellido = "";
         int edad = 0;
         char sexo = ' ';
-        String auspiciantes = "";
+        String auspiciantes = "Apple";
         Gestor instance = refeInstance;
         instance.agregarParticipante(cedula, nombre, apellido, edad, sexo, auspiciantes);
     }
@@ -234,7 +234,7 @@ public class GestorTest {
     @Test
     public void testGuardarAuspiciantes() {
         System.out.println("guardarAuspiciantes");
-        String auspiciantes = "";
+        String auspiciantes = "Pull n Bear";
         Gestor instance = refeInstance;
         instance.guardarAuspiciantes(auspiciantes);
     }
@@ -257,7 +257,7 @@ public class GestorTest {
     @Test
     public void testImprimirParticipantesPorAuspiciante() {
         System.out.println("imprimirParticipantesPorAuspiciante");
-        int opcion = 0;
+        int opcion = 1;
         Gestor instance = refeInstance;
         instance.imprimirParticipantesPorAuspiciante(opcion);
     }
