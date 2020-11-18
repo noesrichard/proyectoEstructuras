@@ -5,7 +5,7 @@
  */
 package gestion;
 
-import main.Participante;
+
 
 /**
  *
