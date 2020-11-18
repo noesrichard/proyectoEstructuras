@@ -64,11 +64,16 @@ public class Lista {
             this.length--;
             return true;
         }
+        
         Nodo aux = this.primero;
         for (int i = 1; i < posicion; i++) {
             aux = aux.siguiente;
         }
+        if ( aux.siguiente.siguiente == null ){ 
+            this.ultimo = aux; 
+        }
         aux.siguiente = aux.siguiente.siguiente;
+        
         this.length--;
         return true;
     }

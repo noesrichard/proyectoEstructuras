@@ -39,5 +39,4 @@ public class Consola {
         return dato; 
     }
     
-    
 }
