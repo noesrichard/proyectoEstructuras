@@ -26,7 +26,7 @@ class MenuReportes {
                     Formularios.reportesPorCategoria();
                     break;
                 case 3:
-                    g.imprimirNoParticipes();
+                    g.imprimirListaParticipantesNoParticipes();
                     break;
                 case 4:
                     g.imprimirNoCompletaron();

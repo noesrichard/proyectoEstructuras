@@ -93,10 +93,14 @@ public class Gestor {
         guardarAuspiciantes(auspiciantes);
     } 
     
-    public void imprimirListaParticipantes(){ 
+    public void imprimirListaParticipantesSiParticipes(){ 
         imprimirCabecera();
         for ( int i = 0; i < listaParticipantes.length; i++){ 
-            System.out.println(listaParticipantes.iterar(i).toString());
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( p.getHoraDeLlegada() != 0) {
+                System.out.println(p.toString());
+            }
+            
         }
     }
     
@@ -153,13 +157,13 @@ public class Gestor {
         imprimirCabecera();
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getCategoria() == categoria ){
+            if ( p.getCategoria() == categoria && p.getHoraDeLlegada() != 0){
                 System.out.println(p.toString());
             }
         }
     }
     
-    public void imprimirNoParticipes(){ 
+    public void imprimirListaParticipantesNoParticipes(){ 
         imprimirCabecera();
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);
@@ -224,7 +228,6 @@ public class Gestor {
     public void imprimirParticipantesPorAuspiciante(int opcion){ 
         imprimirCabecera();
         String auspiciante = (String)listaAuspiciantes.iterar(opcion);
-        System.out.println(auspiciante);
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);
             if ( p.getAuspiciantes().contains(auspiciante)){
