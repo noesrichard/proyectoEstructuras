@@ -41,9 +41,13 @@ public class Main {
         g.agregarParticipante("789","Richrad","Carrion",20,'M',"Puma");
         g.agregarParticipante("1234","Richrad","Carrion",40,'M',"Nike");
         
+        
         g.borrarParticipantePorCedula("123");
+        
         g.agregarParticipante("123","Richrad","Carrion",12,'M',"Nike");
-        g.imprimirParticipantePorCedula("123");
+        
+        //g.imprimirParticipantePorCedula("123");
+        
         g.getParticipantePorCedula("456");
         g.getParticipantePorCedula("789").setHoraDeLlegada(2);
         g.getParticipantePorCedula("1234").setHoraDeLlegada(5);

@@ -188,20 +188,7 @@ public class Gestor {
             }
         }
     }
-    
-    public void reportePorCategoria(int opcion) {
-        switch(opcion){ 
-            case 1: 
-                imprimirPorCategoria('A');
-                break;
-            case 2: 
-                imprimirPorCategoria('B');
-                break; 
-            case 3: 
-                imprimirPorCategoria('C');
-                break;
-        }
-    }
+        
     public void imprimirListaParticipantesNoParticipes(){ 
         MENSAJE.imprimirCabecera();
         for ( int i = 0; i < listaParticipantes.length; i++){
