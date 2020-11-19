@@ -15,10 +15,12 @@ public class Lista {
 
     Nodo primero;
     Nodo ultimo;
+    Nodo iteracion; 
     int length;
 
     Lista() {
         this.primero = null;
+        this.iteracion = this.primero; 
     }
 
     boolean add(Object dato) {
@@ -39,19 +41,14 @@ public class Lista {
         this.length++;
         return true;
     }
-
-    Object iterar(int i) {
-        Nodo aux = this.primero;
-        if (this.length < 1) {
-            return null;
+    
+    Object iterar(int i ){
+        if ( i == 0 ){ 
+            this.iteracion = this.primero;
         }
-        if (i == 0) {
-            return  aux.dato;
-        }
-        for (int j = 0; j < i; j++) {
-            aux = aux.siguiente;
-        }
-        return aux.dato;
+        Object dato = this.iteracion.dato;
+        this.iteracion = this.iteracion.siguiente; 
+        return dato; 
     }
 
     boolean borrar(int posicion) {
@@ -77,6 +74,7 @@ public class Lista {
         this.length--;
         return true;
     }
+ 
    
     public void imprimir() {
         Nodo aux = this.primero;

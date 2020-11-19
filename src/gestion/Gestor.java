@@ -159,6 +159,14 @@ public class Gestor {
         return listaAuspiciantes.length; 
     }
     
+    public void imprimirListaParticipantes(){ 
+        MENSAJE.imprimirCabecera();
+        for ( int i = 0; i < listaParticipantes.length; i++ ){ 
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            System.out.println(p.toString());
+        }
+    }
+    
     public void imprimirListaParticipantesSiParticipes(){ 
         MENSAJE.imprimirCabecera();
         for ( int i = 0; i < listaParticipantes.length; i++){ 
