@@ -106,7 +106,8 @@ public class MensajesMenus {
         CABEZERA("*********CATEGORIAS************"),
         A       ("[1] CATEGORIA A"),
         B       ("[2] CATEGORIA B"),
-        C       ("[3] CATEGORIA C");
+        C       ("[3] CATEGORIA C"),
+        VOLVER  ("[0] VOLVER");
         private String valor;
 
         private MENU_CATEGORIAS(String v) {

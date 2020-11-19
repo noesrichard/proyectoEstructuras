@@ -172,7 +172,9 @@ public class Formularios {
             g.imprimirListaAuspiciantes();
             ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
             int opcion = Integer.parseInt(Consola.ingresarDato(ENTRADA.MENU));
-            g.imprimirParticipantesPorAuspiciante(opcion);
+            if ( opcion != 0 ){ 
+                g.imprimirParticipantesPorAuspiciante(opcion);
+            }
         } 
         
     }

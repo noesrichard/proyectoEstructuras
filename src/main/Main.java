@@ -38,8 +38,8 @@ public class Main {
         
         g.agregarParticipante("123","Richrad","Carrion",12,'M',"Nike");
         g.agregarParticipante("456","Richrad","Carrion",12,'M',"Adidas");
-        g.agregarParticipante("789","Richrad","Carrion",12,'M',"Puma");
-        g.agregarParticipante("1234","Richrad","Carrion",12,'M',"Nike");
+        g.agregarParticipante("789","Richrad","Carrion",20,'M',"Puma");
+        g.agregarParticipante("1234","Richrad","Carrion",40,'M',"Nike");
         
         g.borrarParticipantePorCedula("123");
         g.agregarParticipante("123","Richrad","Carrion",12,'M',"Nike");
