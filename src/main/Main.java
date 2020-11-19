@@ -32,6 +32,8 @@ public class Main {
      
     }
     
+    
+    
     public static void pruebas(){ 
         
     
@@ -52,10 +54,12 @@ public class Main {
         g.getParticipantePorCedula("789").setHoraDeLlegada(2);
         g.getParticipantePorCedula("1234").setHoraDeLlegada(5);
         
+        
+        g.imprimirListaParticipantes();
         //g.finalizarMaraton();
         
         Participante p = g.getParticipantePorCedula("123");
-        g.imprimirListaParticipantesSiParticipes();
+        //g.imprimirListaParticipantesSiParticipes();
         
     }
     
