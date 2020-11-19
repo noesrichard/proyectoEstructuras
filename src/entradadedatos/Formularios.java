@@ -147,8 +147,10 @@ public class Formularios {
         switch(opcion){ 
             case "1": 
                 registrarNoParticipePorId();
+                break;
             case "2": 
                 registrarNoParticipePorCedula();
+                break; 
         }
     }
     
@@ -161,8 +163,10 @@ public class Formularios {
         switch(opcion){ 
             case "1":
                 registrarHoraDeLlegadaPorId();
+                break;
             case "2": 
                 registrarHoraDeLlegadaPorCedula();
+                break;
         }
     }
     
