@@ -224,7 +224,7 @@ public class Gestor {
     }
     public void imprimirParticipantesPorAuspiciante(int opcion){ 
         MENSAJE.imprimirCabecera();
-        String auspiciante = (String)listaAuspiciantes.iterar(opcion);
+        String auspiciante = (String)listaAuspiciantes.iterar(opcion-1);
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);
             if ( p.getAuspiciantes().contains(auspiciante) && p.getHoraDeLlegada() != 0){
