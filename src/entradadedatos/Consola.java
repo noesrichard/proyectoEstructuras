@@ -5,7 +5,7 @@
  */
 package entradadedatos;
 
-import entradadedatos.ENTRADAS;
+import entradadedatos.ENTRADA;
 import java.util.Scanner;
 
 /**
@@ -27,14 +27,14 @@ public class Consola {
         return instancia;
     }
 
-    public static String ingresarDato(ENTRADAS entrada) {
+    public static String ingresarDato(ENTRADA entrada) {
         String dato = null;
         while (dato == null) {
-            System.out.print(entrada.getPeticion());
+            entrada.printPeticion();
             dato = Consola.get_().input.nextLine().toUpperCase();
             dato = entrada.validar(dato);
             if ( dato == null )
-                System.out.println(entrada.getError());
+                entrada.printError();
         }
         return dato; 
     }

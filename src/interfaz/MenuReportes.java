@@ -17,21 +17,21 @@ class MenuReportes {
     static void menu() {
         boolean volver = false;
         do {
-            int opcion = Formularios.seleccionarOpcionMenuReportes();
+            String opcion = Formularios.seleccionarOpcionMenuReportes();
             switch (opcion) {
-                case 1:
+                case "1":
                     Formularios.reportesPorAuspiciante();
                     break;
-                case 2:
+                case "2":
                     Formularios.reportesPorCategoria();
                     break;
-                case 3:
+                case "3":
                     g.imprimirListaParticipantesNoParticipes();
                     break;
-                case 4:
+                case "4":
                     g.imprimirNoCompletaron();
                     break;
-                case 5:
+                case "0":
                     volver = true;
                     break;
             }

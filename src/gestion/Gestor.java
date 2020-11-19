@@ -31,17 +31,7 @@ public class Gestor {
         return instancia;
     }
     
-    public void imprimirCabecera() {
-        System.out.println("---------------------------------------------------"
-                + "------------------------------------------------------------"
-                + "-------");
-        System.out.printf("%10s %20s %20s %30s %4s %4s %9s %6s \n",
-                "CEDULA", "NOMBRE", "APELLIDO", "AUSPICIANTES",
-                "EDAD", "SEXO", "CATEGORIA", "HORA");
-        System.out.println("---------------------------------------------------"
-                + "------------------------------------------------------------"
-                + "------");
-    }
+    
     
     public void iniciarMaraton(){ 
         this.estadoMaraton = "Iniciado";
@@ -88,41 +78,29 @@ public class Gestor {
                                     int edad, char sexo,String auspiciantes){
         char categoria = determinarCategoria(edad);
         Participante p = new Participante(cedula, nombre, apellido, edad, sexo, auspiciantes, categoria);
-        listaParticipantes.add(p);
-        p.setId(listaParticipantes.length);
-        guardarAuspiciantes(auspiciantes);
+        if ( listaParticipantes.add(p) ) {
+            MENSAJE.AGREGAR_PARTICIPANTE.printValido();
+            p.setId(listaParticipantes.length);
+            guardarAuspiciantes(auspiciantes);
+        }
+        else{ 
+            MENSAJE.AGREGAR_PARTICIPANTE.printError();
+        }   
     } 
     
-    public void imprimirListaParticipantesSiParticipes(){ 
-        imprimirCabecera();
-        for ( int i = 0; i < listaParticipantes.length; i++){ 
-            Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getHoraDeLlegada() != 0) {
-                System.out.println(p.toString());
-            }
-            
-        }
-    }
-    
-    public void imprimirParticipantePorCedula(String cedula) {
-        imprimirCabecera();
-        for ( int i = 0; i < listaParticipantes.length; i++){
-            Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getCedula().equals(cedula)){
-                System.out.println(p.toString());
-            }
-        }
-    }
-
     public void borrarParticipantePorCedula(String cedula) {
         for ( int i = 0; i < listaParticipantes.length; i++){ 
             Participante p = (Participante)listaParticipantes.iterar(i);
             if ( p.getCedula().equals(cedula)){
-                listaParticipantes.borrar(i);
+                if ( listaParticipantes.borrar(i) ){ 
+                    MENSAJE.BORRAR_PARTICIPANTE.printValido();
+                }else{ 
+                    MENSAJE.BORRAR_PARTICIPANTE.printError();
+                }
             }
         }
     }
-
+    
     public Participante getParticipantePorCedula(String cedula) {
         for ( int i = 0; i < listaParticipantes.length; i++){ 
             Participante p = (Participante)listaParticipantes.iterar(i);
@@ -152,50 +130,7 @@ public class Gestor {
         }
         return null;
     }
-
-    public void imprimirPorCategoria(char categoria){ 
-        imprimirCabecera();
-        for ( int i = 0; i < listaParticipantes.length; i++){
-            Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getCategoria() == categoria && p.getHoraDeLlegada() != 0){
-                System.out.println(p.toString());
-            }
-        }
-    }
     
-    public void imprimirListaParticipantesNoParticipes(){ 
-        imprimirCabecera();
-        for ( int i = 0; i < listaParticipantes.length; i++){
-            Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( !p.getParticipo() ){
-                System.out.println(p.toString());
-            }
-        }
-    }
-
-    public void reportePorCategoria(int opcion) {
-        switch(opcion){ 
-            case 1: 
-                imprimirPorCategoria('A');
-                break;
-            case 2: 
-                imprimirPorCategoria('B');
-                break; 
-            case 3: 
-                imprimirPorCategoria('C');
-                break;
-        }
-    }
-
-    public void imprimirNoCompletaron() {
-        imprimirCabecera();
-        for ( int i = 0; i < listaParticipantes.length; i++){
-            Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getHoraDeLlegada() == 0 && p.getParticipo()){
-                System.out.println(p.toString());
-            }
-        }
-    }
     
     private boolean existeAuspiciante(String auspiciante){ 
         for ( int i = 0; i < listaAuspiciantes.length; i++ ){ 
@@ -224,9 +159,71 @@ public class Gestor {
         return listaAuspiciantes.length; 
     }
     
+    public void imprimirListaParticipantesSiParticipes(){ 
+        MENSAJE.imprimirCabecera();
+        for ( int i = 0; i < listaParticipantes.length; i++){ 
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( p.getHoraDeLlegada() != 0) {
+                System.out.println(p.toString());
+            }
+            
+        }
+    }
     
+    public void imprimirParticipantePorCedula(String cedula) {
+        MENSAJE.imprimirCabecera();
+        for ( int i = 0; i < listaParticipantes.length; i++){
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( p.getCedula().equals(cedula)){
+                System.out.println(p.toString());
+            }
+        }
+    }
+    public void imprimirPorCategoria(char categoria){ 
+        MENSAJE.imprimirCabecera();
+        for ( int i = 0; i < listaParticipantes.length; i++){
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( p.getCategoria() == categoria && p.getHoraDeLlegada() != 0){
+                System.out.println(p.toString());
+            }
+        }
+    }
+    
+    public void reportePorCategoria(int opcion) {
+        switch(opcion){ 
+            case 1: 
+                imprimirPorCategoria('A');
+                break;
+            case 2: 
+                imprimirPorCategoria('B');
+                break; 
+            case 3: 
+                imprimirPorCategoria('C');
+                break;
+        }
+    }
+    public void imprimirListaParticipantesNoParticipes(){ 
+        MENSAJE.imprimirCabecera();
+        for ( int i = 0; i < listaParticipantes.length; i++){
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( !p.getParticipo() ){
+                System.out.println(p.toString());
+            }
+        }
+    }
+
+    
+    public void imprimirNoCompletaron() {
+        MENSAJE.imprimirCabecera();
+        for ( int i = 0; i < listaParticipantes.length; i++){
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( p.getHoraDeLlegada() == 0 && p.getParticipo()){
+                System.out.println(p.toString());
+            }
+        }
+    }
     public void imprimirParticipantesPorAuspiciante(int opcion){ 
-        imprimirCabecera();
+        MENSAJE.imprimirCabecera();
         String auspiciante = (String)listaAuspiciantes.iterar(opcion);
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);

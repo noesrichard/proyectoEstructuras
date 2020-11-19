@@ -12,7 +12,7 @@ import validacion.Validador;
  *
  * @author carri
  */
-enum ENTRADAS {
+enum ENTRADA {
     NOMBRE          (MENSAJES.NOMBRE, REGEX.NOMBRE_APELLIDO.txt()),
     CEDULA_NUEVA    (MENSAJES.CEDULA,new Cedula(Cedula.CEDULA_NUEVA)), 
     APELLIDO        (MENSAJES.APELLIDO, REGEX.NOMBRE_APELLIDO.txt()), 
@@ -75,12 +75,12 @@ enum ENTRADAS {
     private String regex;
     private Validador validador = null;
 
-    private ENTRADAS(MENSAJES mensajes, String regex) {
+    private ENTRADA(MENSAJES mensajes, String regex) {
         this.mensajes = mensajes;
         this.regex = regex;
     }
 
-    private ENTRADAS(MENSAJES mensajes, Validador validador) {
+    private ENTRADA(MENSAJES mensajes, Validador validador) {
         this.mensajes = mensajes;
         this.validador = validador;
     }
@@ -96,12 +96,12 @@ enum ENTRADAS {
         return null;
     }
 
-    public String getPeticion() {
-        return this.mensajes.getPeticion();
+    public void printPeticion() {
+        System.out.println(this.mensajes.getPeticion());
     }
 
-    public String getError() {
-        return this.mensajes.getError();
+    public void printError() {
+        System.out.println(this.mensajes.getError());
     }
     
     public void setNumeroDeOpcionesMenu(int numOpciones){ 

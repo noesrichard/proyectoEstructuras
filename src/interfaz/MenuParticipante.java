@@ -33,7 +33,7 @@ class MenuParticipante {
                 case "4":
                     Formularios.borrarParticipante();
                     break;
-                case "5":
+                case "0":
                     volver = true;
                     break;
             }
@@ -61,7 +61,7 @@ class MenuParticipante {
                     case "5":
                         Formularios.actualizarSexo(participante);
                         break;
-                    case "6":
+                    case "0":
                         volver = true;
                         break;
                 }

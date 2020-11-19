@@ -46,7 +46,7 @@ public class MensajesMenus {
         VISUALIZAR  ("[2] VISUALIZAR PARTICIPANTE"),
         ACTUALIZAR  ("[3] ACTUALIZAR PARTICIPANTE"),
         BORRAR      ("[4] BORRAR PARTICIPANTE"),
-        VOLVER      ("[5] VOLVER");
+        VOLVER      ("[0] VOLVER");
 
         private String valor;
 
@@ -67,7 +67,7 @@ public class MensajesMenus {
         OPCION_3("[3] ACTUALIZAR AUSPICIANTES"),
         OPCION_4("[4] ACTUALIZAR EDAD"),
         OPCION_5("[5] ACTUALIZAR SEXO"),
-        VOLVER  ("[6] VOLVER");
+        VOLVER  ("[0] VOLVER");
 
         private String valor;
 
@@ -87,7 +87,7 @@ public class MensajesMenus {
         OPCION_2("[2] PARTICIPANTES POR CATEGORIA EN ORDEN DE LLEGADA "),
         OPCION_3("[3] INSCRITOS QUE NO PARTICIPARON "),
         OPCION_4("[4] PARTICIPANTES QUE NO COMPLETARON LA CARRERA"),
-        VOLVER  ("[5] VOLVER");
+        VOLVER  ("[0] VOLVER");
 
         private String valor;
 
@@ -142,7 +142,7 @@ public class MensajesMenus {
             System.out.println(mensaje.txt());
             numOpciones++;
         }
-        return numOpciones;
+        return numOpciones-2;
     }  
 
 }
