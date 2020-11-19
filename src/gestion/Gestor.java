@@ -243,6 +243,39 @@ public class Gestor {
             }
         }
     }
+    
+    public void setHoraLlegadaString(){ 
+        for (int i = 0 ; i < listaParticipantes.length; i++){ 
+           Participante p = (Participante)listaParticipantes.iterar(i);
+           String horaString = convertirHora(p.getHoraDeLlegada());
+           p.setHoraLlegadaString(horaString);
+        }
+    }
+    private String convertirHora(int valor) {
+        String tiempo = String.valueOf(valor);
+        String[] digitos = tiempo.split("");
+        int cantidadDigitos = digitos.length;
+        String hora = "";
+        int i = 0;
+        for (String digito : digitos) {
+            if (cantidadDigitos % 2 == 0) {
+                if (i % 2 != 0 && i != cantidadDigitos - 1) {
+                    hora += digito + ":";
+                } else {
+                    hora += digito;
+                }
+                i++;
+            } else {
+                if (i % 2 == 0 && i != cantidadDigitos - 1) {
+                    hora += digito + ":";
+                } else {
+                    hora += digito;
+                }
+                i++;
+            }
+        }
+        return hora;
+    }
 
     
 
