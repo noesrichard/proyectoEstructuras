@@ -88,7 +88,7 @@ public class Formularios {
             String horas = Consola.ingresarDato(ENTRADA.HORAS);
             String minutos = Consola.ingresarDato(ENTRADA.MINUTOS);
             String segundos = Consola.ingresarDato(ENTRADA.SEGUNDOS);
-            int tiempo = Integer.parseInt(horas+minutos+segundos);
+            String tiempo = horas+":"+minutos+":"+segundos; 
             g.getParticipantePorId(id).setHoraDeLlegada(tiempo);
         }
     }
@@ -99,7 +99,7 @@ public class Formularios {
             String horas = Consola.ingresarDato(ENTRADA.HORAS);
             String minutos = Consola.ingresarDato(ENTRADA.MINUTOS);
             String segundos = Consola.ingresarDato(ENTRADA.SEGUNDOS);
-            int tiempo = Integer.parseInt(horas+minutos+segundos);
+            String tiempo = horas+":"+minutos+":"+segundos; 
             g.getParticipantePorCedula(cedula).setHoraDeLlegada(tiempo); 
         }
     }
