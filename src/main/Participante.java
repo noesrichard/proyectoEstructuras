@@ -11,8 +11,8 @@ package main;
  */
 public class Participante {
     private int id; 
-    private String cedula,nombre,apellido,auspiciantes,horaLlegadaString; 
-    private int edad, horaDeLlegada; 
+    private String cedula,nombre,apellido,auspiciantes,horaDeLlegada; 
+    private int edad;
     private char sexo,categoria; 
     private boolean participo; 
     
@@ -25,14 +25,16 @@ public class Participante {
         this.auspiciantes = auspiciantes; 
         this.categoria = categoria;
         this.participo = true; 
+        this.horaDeLlegada = "0"; 
     }
     
-    public int getHoraDeLlegada(){ 
-        return this.horaDeLlegada; 
+    public int getHoraComparable(){
+        String horaComparable = this.horaDeLlegada.replace(":", "");
+        return Integer.parseInt(horaComparable); 
     }
     
-    public void setHoraDeLlegada(int horaLlegada){ 
-        this.horaDeLlegada = horaLlegada; 
+    public void setHoraDeLlegada(String horaDeLlegada){ 
+        this.horaDeLlegada = horaDeLlegada; 
     }
     
     public void setCategoria(char categoria){ 
@@ -47,10 +49,7 @@ public class Participante {
     public String toString(){ 
         return String.format("%10s %20s %20s %30s %4s %4s %9s %8s \n", 
                 this.cedula, this.nombre, this.apellido, this.auspiciantes, 
-                this.edad, this.sexo, this.categoria, this.horaLlegadaString);
-    }
-    public void setHoraLlegadaString(String hora){ 
-        this.horaLlegadaString = hora; 
+                this.edad, this.sexo, this.categoria, this.horaDeLlegada);
     }
     public void setNombre(String nombre) {
         this.nombre = nombre; 

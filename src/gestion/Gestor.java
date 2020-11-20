@@ -50,8 +50,8 @@ public class Gestor {
         for ( int i = 0; i < listaParticipantes.length-1; i++ ){
             Nodo aux = listaParticipantes.primero;
             while (aux.siguiente != null) {
-                if ( ((Participante)aux.dato).getHoraDeLlegada() > 
-                        ((Participante)aux.siguiente.dato).getHoraDeLlegada()) {
+                if ( ((Participante)aux.dato).getHoraComparable() > 
+                        ((Participante)aux.siguiente.dato).getHoraComparable() ) {
                     Object tempo = aux.dato;
                     aux.dato = aux.siguiente.dato;
                     aux.siguiente.dato = tempo;
@@ -171,7 +171,7 @@ public class Gestor {
         MENSAJE.imprimirCabecera();
         for ( int i = 0; i < listaParticipantes.length; i++){ 
             Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getHoraDeLlegada() != 0) {
+            if ( p.getHoraComparable() != 0) {
                 System.out.println(p.toString());
             }
             
@@ -191,7 +191,7 @@ public class Gestor {
         MENSAJE.imprimirCabecera();
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getCategoria() == categoria && p.getHoraDeLlegada() != 0){
+            if ( p.getCategoria() == categoria && p.getHoraComparable() != 0){
                 System.out.println(p.toString());
             }
         }
@@ -212,7 +212,7 @@ public class Gestor {
         MENSAJE.imprimirCabecera();
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getHoraDeLlegada() == 0 && p.getParticipo()){
+            if ( p.getHoraComparable() == 0 && p.getParticipo()){
                 System.out.println(p.toString());
             }
         }
@@ -222,7 +222,7 @@ public class Gestor {
         String auspiciante = (String)listaAuspiciantes.iterar(opcion-1);
         for ( int i = 0; i < listaParticipantes.length; i++){
             Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getAuspiciantes().contains(auspiciante) && p.getHoraDeLlegada() != 0){
+            if ( p.getAuspiciantes().contains(auspiciante) && p.getHoraComparable() != 0){
                 System.out.println(p.toString());
             }
         }
@@ -244,40 +244,5 @@ public class Gestor {
         }
     }
     
-    public void setHoraLlegadaString(){ 
-        for (int i = 0 ; i < listaParticipantes.length; i++){ 
-           Participante p = (Participante)listaParticipantes.iterar(i);
-           String horaString = convertirHora(p.getHoraDeLlegada());
-           p.setHoraLlegadaString(horaString);
-        }
-    }
-    private String convertirHora(int valor) {
-        String tiempo = String.valueOf(valor);
-        String[] digitos = tiempo.split("");
-        int cantidadDigitos = digitos.length;
-        String hora = "";
-        int i = 0;
-        for (String digito : digitos) {
-            if (cantidadDigitos % 2 == 0) {
-                if (i % 2 != 0 && i != cantidadDigitos - 1) {
-                    hora += digito + ":";
-                } else {
-                    hora += digito;
-                }
-                i++;
-            } else {
-                if (i % 2 == 0 && i != cantidadDigitos - 1) {
-                    hora += digito + ":";
-                } else {
-                    hora += digito;
-                }
-                i++;
-            }
-        }
-        return hora;
-    }
-
-    
-
-    
+  
 }

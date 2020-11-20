@@ -51,13 +51,12 @@ public class Main {
         //g.imprimirParticipantePorCedula("123");
         
         g.getParticipantePorCedula("456");
-        g.getParticipantePorCedula("789").setHoraDeLlegada(85023);
-        g.getParticipantePorCedula("1234").setHoraDeLlegada(64023);
+        g.getParticipantePorCedula("789").setHoraDeLlegada("4:30:30");
+        g.getParticipantePorCedula("1234").setHoraDeLlegada("3:20:40");
         
         
         
         g.finalizarMaraton();
-        g.setHoraLlegadaString();
         
         g.imprimirListaParticipantes();
         
