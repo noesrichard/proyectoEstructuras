@@ -83,8 +83,8 @@ public class MensajesMenus {
     
     public enum ID_O_CEDULA{ 
         
-        POR_ID    ("\n[1] POR ID"),
-        POR_CEDULA("[2] POR CEDULA");
+        POR_ID    ("[1] POR ID"),
+        POR_CEDULA("[2] POR CEDULA\n");
         
         private String valor;
 
