@@ -10,7 +10,7 @@ package main;
  * @author carri
  */
 public class Participante {
-    private int id; 
+    private String id; 
     private String cedula,nombre,apellido,auspiciantes,horaDeLlegada; 
     private int edad;
     private char sexo,categoria; 
@@ -47,7 +47,7 @@ public class Participante {
     
     @Override
     public String toString(){ 
-        return String.format("%5d %10s %20s %20s %30s %4s %4s %9s %8s \n", this.id,
+        return String.format("%5s %10s %20s %20s %30s %4s %4s %9s %8s \n", this.id,
                 this.cedula, this.nombre, this.apellido, this.auspiciantes, 
                 this.edad, this.sexo, this.categoria, this.horaDeLlegada);
     }
@@ -71,11 +71,11 @@ public class Participante {
         this.sexo = sexo; 
     }
     
-    public void setId(int id ){ 
+    public void setId(String id ){ 
         this.id = id; 
     }
 
-    public int getId() {
+    public String getId() {
         return this.id; 
     }
     

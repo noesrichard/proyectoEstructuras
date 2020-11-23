@@ -39,7 +39,7 @@ class MenuParticipante {
     }
     private static void menuActualizarParticipante() {
         boolean volver = false;
-        Participante participante = Formularios.getParticipantePorCedula();
+        Participante participante = Formularios.getParticipante();
         do {
             if (participante != null) {
                 String opcion = Formularios.seleccionarOpcionMenuActualizar(); 

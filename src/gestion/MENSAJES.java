@@ -9,19 +9,19 @@ package gestion;
  *
  * @author carri
  */
-public enum MENSAJE {
+public enum MENSAJES {
     
     AGREGAR_PARTICIPANTE("SE AGREGO AL PARTICIPANTE CORRECTAMENTE! ", "NO SE PUDO AGREGAR AL PARTICIPANTE DEBIDO A UN ERROR!"),
-    BORRAR_PARTICIPANTE("SE BORRO AL PARTICIPANTE CORRECTAMENTE! ", "NO SE PUDO BORRAR AL PARTICIPANTE DEBIDO A UN ERROR!");
-    
+    BORRAR_PARTICIPANTE("SE BORRO AL PARTICIPANTE CORRECTAMENTE! ", "NO SE PUDO BORRAR AL PARTICIPANTE DEBIDO A UN ERROR!"),
+    NO_SE_ENCONTRO_PARTICIPANTE("NO SE ENCONTRO AL PARTICIPANTE!");
     private String valido, error; 
     
-    private MENSAJE(String valido, String error){ 
+    private MENSAJES(String valido, String error){ 
         this.valido = valido; 
         this.error = error; 
     }
     
-    private MENSAJE(String error){ 
+    private MENSAJES(String error){ 
         this.error = error; 
     }
     

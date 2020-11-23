@@ -124,8 +124,8 @@ public class MensajesMenus {
     
     public enum ID_O_CEDULA{ 
         
-        REGISTRAR_POR_ID    ("[1] REGISTRAR POR ID"),
-        REGISTRAR_POR_CEDULA("[2] REGISTRAR POR CEDULA");
+        POR_ID    ("[1] POR ID"),
+        POR_CEDULA("[2] POR CEDULA");
         
         private String valor;
 

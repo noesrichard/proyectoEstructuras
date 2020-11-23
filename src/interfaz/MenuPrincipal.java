@@ -41,10 +41,10 @@ public class MenuPrincipal {
                 MenuParticipante.menu();
                 break;
             case "Iniciado":
-                Formularios.menuRegistrarHoraDeLlegada();
+                Formularios.registrarHoraDeLlegada();
                 break;
             case "Finalizado":
-                System.out.println("OPCION NO IMPLEMENTADA");
+                System.out.println("OPCION NO IMPLEMENTADA (REPORTES)");
                 break;
             default:
                 break;
@@ -57,7 +57,7 @@ public class MenuPrincipal {
                 g.iniciarMaraton();
                 break;
             case "Iniciado":
-                Formularios.menuRegistrarNoParticipe(); 
+                Formularios.registrarNoParticipe(); 
                 break;
             default:
                 break;
@@ -67,6 +67,7 @@ public class MenuPrincipal {
     private static void opcionTres() {
         if (g.getEstadoMaraton().equals("Iniciado")) {
             g.finalizarMaraton();
+            g.ordenarListaParticipantes();
         }
     }
 

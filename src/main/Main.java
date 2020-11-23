@@ -44,7 +44,7 @@ public class Main {
         g.agregarParticipante("1234","Richrad","Carrion",40,'M',"Nike");
         
         
-        g.borrarParticipantePorCedula("123");
+        //g.borrarParticipantePorCedula("123");
         
         g.agregarParticipante("123","Richrad","Carrion",12,'M',"Nike");
         

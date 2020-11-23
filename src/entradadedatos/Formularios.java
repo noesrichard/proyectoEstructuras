@@ -13,50 +13,70 @@ import main.Participante;
 /**
  *
  * @author carri
- * 
- * Los formularios se componen por uno o varios campos o entradas 
- * que deben ser completadas por el usuario y estos envian los datos
- * recolectados al gestor. 
- * 
+ *
+ * Los formularios se componen por uno o varios campos o entradas que deben ser completadas por el usuario y estos envian los datos recolectados al gestor.
+ *
  */
 public class Formularios {
-    static Gestor g = Gestor.get_();
-    
-    public static void agregarParticipante(){ 
-        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_NUEVA);
-        if ( !cedula.equals("0") ){ 
-            String nombre       = Consola.ingresarDato(ENTRADA.NOMBRE);
-            String apellido     = Consola.ingresarDato(ENTRADA.APELLIDO);
-            int edad            = Integer.parseInt(Consola.ingresarDato(ENTRADA.EDAD));
-            char sexo           = Consola.ingresarDato(ENTRADA.SEXO).charAt(0);
-            String auspiciantes = Consola.ingresarDato(ENTRADA.AUSPICIANTES);
-            g.agregarParticipante(cedula, nombre, apellido, edad, sexo, auspiciantes); 
-        } 
-    }
 
-    public static void visualizarParticipante() {
-        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
-        if ( !cedula.equals("0") ){ 
-            g.imprimirParticipantePorCedula(cedula); 
+    static Gestor g = Gestor.get_();
+
+    public static void agregarParticipante() {
+        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_NUEVA);
+        if (!cedula.equals("0")) {
+            String nombre = Consola.ingresarDato(ENTRADA.NOMBRE);
+            String apellido = Consola.ingresarDato(ENTRADA.APELLIDO);
+            int edad = Integer.parseInt(Consola.ingresarDato(ENTRADA.EDAD));
+            char sexo = Consola.ingresarDato(ENTRADA.SEXO).charAt(0);
+            String auspiciantes = Consola.ingresarDato(ENTRADA.AUSPICIANTES);
+            g.agregarParticipante(cedula, nombre, apellido, edad, sexo, auspiciantes);
         }
     }
 
-    public static void borrarParticipante() {
-        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
-        if ( !cedula.equals("0") ){ 
-            g.borrarParticipantePorCedula(cedula);
-        } 
+    public static Participante getParticipante() {
+        System.out.println(MensajesMenus.ID_O_CEDULA.POR_ID.txt());
+        System.out.println(MensajesMenus.ID_O_CEDULA.POR_CEDULA.txt());
+        ENTRADA.MENU.setNumeroDeOpcionesMenu(2);
+        String opcion = Consola.ingresarDato(ENTRADA.MENU);
+        switch (opcion) {
+            case "1":
+                return getParticipantePorId();
+            case "2":
+                return getParticipantePorCedula();
+        }
+        return null;
+    }
+    
+    private static Participante getParticipantePorId() {
+        String id = Consola.ingresarDatoConEscape(ENTRADA.ID);
+        if (!id.equals("0")) {
+            return g.getParticipantePorId(id);
+        }
+        return null;
     }
 
-    public static Participante getParticipantePorCedula() {
+    private static Participante getParticipantePorCedula() {
         String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
-        if ( !cedula.equals("0") ){
-            g.imprimirParticipantePorCedula(cedula);
+        if (!cedula.equals("0")) {
             return g.getParticipantePorCedula(cedula);
         }
         return null; 
     }
 
+     public static void visualizarParticipante() {
+        Participante p = getParticipante();
+        if (p != null) {
+            g.imprimirParticipante(p);
+        }
+    }
+
+    public static void borrarParticipante() {
+        Participante p = getParticipante();
+        if (p != null) {
+            g.borrarParticipante(p);
+        }
+    }
+    
     public static void actualizarNombre(Participante participante) {
         String nombre = Consola.ingresarDato(ENTRADA.NOMBRE);
         g.getParticipante(participante).setNombre(nombre);
@@ -82,88 +102,42 @@ public class Formularios {
         g.getParticipante(participante).setSexo(sexo);
     }
 
-    public static void registrarHoraDeLlegadaPorId() {
-        int id = Integer.parseInt(Consola.ingresarDatoConEscape(ENTRADA.ID));
-        if ( id != 0 ){ 
-            String horas = Consola.ingresarDato(ENTRADA.HORAS);
-            String minutos = Consola.ingresarDato(ENTRADA.MINUTOS);
-            String segundos = Consola.ingresarDato(ENTRADA.SEGUNDOS);
-            String tiempo = horas+":"+minutos+":"+segundos; 
-            g.getParticipantePorId(id).setHoraDeLlegada(tiempo);
-        }
-    }
-    
-    public static void registrarHoraDeLlegadaPorCedula() {
-        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
-        if ( !cedula.equals("0")){ 
-            String horas = Consola.ingresarDato(ENTRADA.HORAS);
-            String minutos = Consola.ingresarDato(ENTRADA.MINUTOS);
-            String segundos = Consola.ingresarDato(ENTRADA.SEGUNDOS);
-            String tiempo = horas+":"+minutos+":"+segundos; 
-            g.getParticipantePorCedula(cedula).setHoraDeLlegada(tiempo); 
-        }
-    }
-
-    public static void registrarNoParticipePorId() {
-        int id = Integer.parseInt(Consola.ingresarDatoConEscape(ENTRADA.ID));
-        if ( id != 0 ){ 
-            g.getParticipantePorId(id).noParticipo(); 
-        }
-    }
-
-    public static void registrarNoParticipePorCedula() {
-       String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
-       if ( !cedula.equals("0")){ 
-          g.getParticipantePorCedula(cedula).noParticipo();
-       }
-    }
-    
     public static String seleccionarOpcionMenuParticipantes() {
         int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_PARTICIPANTE.values());
         ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
         return Consola.ingresarDatoConEscape(ENTRADA.MENU);
     }
+
     public static String seleccionarOpcionMenuActualizar() {
         int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_ACTUALIZAR.values());
         ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
         return Consola.ingresarDatoConEscape(ENTRADA.MENU);
     }
+
     public static String seleccionarOpcionMenuPrincipal() {
         int numOpciones = MenuPrincipal.imprimirMenuPrincipal();
         ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
         return Consola.ingresarDatoConEscape(ENTRADA.MENU);
     }
-    
-    
-    public static void menuRegistrarNoParticipe(){
-        System.out.println(MensajesMenus.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
-        System.out.println(MensajesMenus.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
-        ENTRADA.MENU.setNumeroDeOpcionesMenu(2);
-        String opcion = Consola.ingresarDato(ENTRADA.MENU);
-        switch(opcion){ 
-            case "1": 
-                registrarNoParticipePorId();
-                break;
-            case "2": 
-                registrarNoParticipePorCedula();
-                break; 
+
+    public static void registrarNoParticipe() {
+        Participante p = getParticipante();
+        if (p != null) {
+            p.noParticipo();
         }
     }
-    
-    
-    public static void menuRegistrarHoraDeLlegada(){ 
-        System.out.println(MensajesMenus.ID_O_CEDULA.REGISTRAR_POR_ID.txt());
-        System.out.println(MensajesMenus.ID_O_CEDULA.REGISTRAR_POR_CEDULA.txt());
-        ENTRADA.MENU.setNumeroDeOpcionesMenu(2);
-        String opcion = Consola.ingresarDato(ENTRADA.MENU);
-        switch(opcion){ 
-            case "1":
-                registrarHoraDeLlegadaPorId();
-                break;
-            case "2": 
-                registrarHoraDeLlegadaPorCedula();
-                break;
+
+    public static void registrarHoraDeLlegada() {
+        Participante p = getParticipante();
+        if (p != null) {
+            String horas = Consola.ingresarDato(ENTRADA.HORAS);
+            String minutos = Consola.ingresarDato(ENTRADA.MINUTOS);
+            String segundos = Consola.ingresarDato(ENTRADA.SEGUNDOS);
+            String tiempo = horas + ":" + minutos + ":" + segundos;
+            p.setHoraDeLlegada(tiempo);
         }
+
     }
+
     
 }
