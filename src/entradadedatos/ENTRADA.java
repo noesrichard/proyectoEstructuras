@@ -87,9 +87,7 @@ enum ENTRADA {
     }
 
     public String validar(String dato) {
-        if ( dato.equals("0") ){
-            return dato; 
-        }else if (this.validador != null) {
+        if (this.validador != null) {
             return this.validador.validar(dato);
         } else if (dato.matches(regex)) {
             return dato;

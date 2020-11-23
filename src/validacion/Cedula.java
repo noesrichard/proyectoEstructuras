@@ -20,8 +20,10 @@ public class Cedula implements Validador {
     @Override
     public String validar(String cedula) {
         Gestor g = Gestor.get_();
-
-        if (validarCedula(cedula)) {
+        if ( cedula.equals("0")){
+            return cedula; 
+        }
+        else if (validarCedula(cedula)) {
             return (g.existeParticipante(cedula)) ? null : cedula;
         }
         return null;

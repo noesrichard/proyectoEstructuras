@@ -185,9 +185,6 @@ public class Gestor {
     public int cantidadDeAuspiciantes() {
         return listaAuspiciantes.length;
     }
-
-   
-
     public void imprimirListaParticipantes() {
         MENSAJES.imprimirCabecera();
         for (int i = 0; i < listaParticipantes.length; i++) {

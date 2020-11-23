@@ -22,7 +22,7 @@ public class Formularios {
     static Gestor g = Gestor.get_();
 
     public static void agregarParticipante() {
-        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_NUEVA);
+        String cedula = Consola.ingresarDato(ENTRADA.CEDULA_NUEVA);
         if (!cedula.equals("0")) {
             String nombre = Consola.ingresarDato(ENTRADA.NOMBRE);
             String apellido = Consola.ingresarDato(ENTRADA.APELLIDO);
@@ -36,6 +36,7 @@ public class Formularios {
     public static Participante getParticipante() {
         System.out.println(MensajesMenus.ID_O_CEDULA.POR_ID.txt());
         System.out.println(MensajesMenus.ID_O_CEDULA.POR_CEDULA.txt());
+        System.out.println(MensajesMenus.ID_O_CEDULA.VOLVER.txt());
         ENTRADA.MENU.setNumeroDeOpcionesMenu(2);
         String opcion = Consola.ingresarDato(ENTRADA.MENU);
         switch (opcion) {
@@ -48,19 +49,15 @@ public class Formularios {
     }
     
     private static Participante getParticipantePorId() {
-        String id = Consola.ingresarDatoConEscape(ENTRADA.ID);
-        if (!id.equals("0")) {
-            return g.getParticipantePorId(id);
-        }
-        return null;
+        String id = Consola.ingresarDato(ENTRADA.ID);
+        return g.getParticipantePorId(id);
+        
     }
 
     private static Participante getParticipantePorCedula() {
-        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
-        if (!cedula.equals("0")) {
-            return g.getParticipantePorCedula(cedula);
-        }
-        return null; 
+        String cedula = Consola.ingresarDato(ENTRADA.CEDULA_EXISTENTE);
+        return g.getParticipantePorCedula(cedula);
+         
     }
 
      public static void visualizarParticipante() {
@@ -105,19 +102,19 @@ public class Formularios {
     public static String seleccionarOpcionMenuParticipantes() {
         int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_PARTICIPANTE.values());
         ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Consola.ingresarDatoConEscape(ENTRADA.MENU);
+        return Consola.ingresarDato(ENTRADA.MENU);
     }
 
     public static String seleccionarOpcionMenuActualizar() {
         int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_ACTUALIZAR.values());
         ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Consola.ingresarDatoConEscape(ENTRADA.MENU);
+        return Consola.ingresarDato(ENTRADA.MENU);
     }
 
     public static String seleccionarOpcionMenuPrincipal() {
         int numOpciones = MenuPrincipal.imprimirMenuPrincipal();
         ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Consola.ingresarDatoConEscape(ENTRADA.MENU);
+        return Consola.ingresarDato(ENTRADA.MENU);
     }
 
     public static void registrarNoParticipe() {
