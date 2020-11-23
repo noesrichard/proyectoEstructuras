@@ -36,7 +36,7 @@ public enum MENSAJE {
         System.out.println("---------------------------------------------------"
                 + "------------------------------------------------------------"
                 + "-------");
-        System.out.printf("%10s %20s %20s %30s %4s %4s %9s %6s \n",
+        System.out.printf("%5s %10s %20s %20s %30s %4s %4s %9s %6s \n","ID",
                 "CEDULA", "NOMBRE", "APELLIDO", "AUSPICIANTES",
                 "EDAD", "SEXO", "CATEGORIA", "HORA");
         System.out.println("---------------------------------------------------"

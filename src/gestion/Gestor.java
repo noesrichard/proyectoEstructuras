@@ -17,6 +17,7 @@ public class Gestor {
     private final Lista listaAuspiciantes; 
     private static Gestor instancia = null;
     private String estadoMaraton;  
+    private int id = 0; 
     
     private Gestor() {
         this.listaParticipantes = new Lista();
@@ -79,8 +80,9 @@ public class Gestor {
         char categoria = determinarCategoria(edad);
         Participante p = new Participante(cedula, nombre, apellido, edad, sexo, auspiciantes, categoria);
         if ( listaParticipantes.add(p) ) {
+            this.id ++; 
             MENSAJE.AGREGAR_PARTICIPANTE.printValido();
-            p.setId(listaParticipantes.length);
+            p.setId(this.id);
             guardarAuspiciantes(auspiciantes);
         }
         else{ 

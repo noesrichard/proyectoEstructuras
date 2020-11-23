@@ -47,7 +47,7 @@ public class Participante {
     
     @Override
     public String toString(){ 
-        return String.format("%10s %20s %20s %30s %4s %4s %9s %8s \n", 
+        return String.format("%5d %10s %20s %20s %30s %4s %4s %9s %8s \n", this.id,
                 this.cedula, this.nombre, this.apellido, this.auspiciantes, 
                 this.edad, this.sexo, this.categoria, this.horaDeLlegada);
     }

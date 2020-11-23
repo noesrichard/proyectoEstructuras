@@ -23,7 +23,7 @@ public class Formularios {
     static Gestor g = Gestor.get_();
     
     public static void agregarParticipante(){ 
-        String cedula = Consola.ingresarDato(ENTRADA.CEDULA_NUEVA);
+        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_NUEVA);
         if ( !cedula.equals("0") ){ 
             String nombre       = Consola.ingresarDato(ENTRADA.NOMBRE);
             String apellido     = Consola.ingresarDato(ENTRADA.APELLIDO);
@@ -35,21 +35,21 @@ public class Formularios {
     }
 
     public static void visualizarParticipante() {
-        String cedula = Consola.ingresarDato(ENTRADA.CEDULA_EXISTENTE);
+        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
         if ( !cedula.equals("0") ){ 
             g.imprimirParticipantePorCedula(cedula); 
         }
     }
 
     public static void borrarParticipante() {
-        String cedula = Consola.ingresarDato(ENTRADA.CEDULA_EXISTENTE);
+        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
         if ( !cedula.equals("0") ){ 
             g.borrarParticipantePorCedula(cedula);
         } 
     }
 
     public static Participante getParticipantePorCedula() {
-        String cedula = Consola.ingresarDato(ENTRADA.CEDULA_EXISTENTE);
+        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
         if ( !cedula.equals("0") ){
             g.imprimirParticipantePorCedula(cedula);
             return g.getParticipantePorCedula(cedula);
@@ -83,7 +83,7 @@ public class Formularios {
     }
 
     public static void registrarHoraDeLlegadaPorId() {
-        int id = Integer.parseInt(Consola.ingresarDato(ENTRADA.ID));
+        int id = Integer.parseInt(Consola.ingresarDatoConEscape(ENTRADA.ID));
         if ( id != 0 ){ 
             String horas = Consola.ingresarDato(ENTRADA.HORAS);
             String minutos = Consola.ingresarDato(ENTRADA.MINUTOS);
@@ -94,7 +94,7 @@ public class Formularios {
     }
     
     public static void registrarHoraDeLlegadaPorCedula() {
-        String cedula = Consola.ingresarDato(ENTRADA.CEDULA_EXISTENTE);
+        String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
         if ( !cedula.equals("0")){ 
             String horas = Consola.ingresarDato(ENTRADA.HORAS);
             String minutos = Consola.ingresarDato(ENTRADA.MINUTOS);
@@ -105,14 +105,14 @@ public class Formularios {
     }
 
     public static void registrarNoParticipePorId() {
-        int id = Integer.parseInt(Consola.ingresarDato(ENTRADA.ID));
+        int id = Integer.parseInt(Consola.ingresarDatoConEscape(ENTRADA.ID));
         if ( id != 0 ){ 
             g.getParticipantePorId(id).noParticipo(); 
         }
     }
 
     public static void registrarNoParticipePorCedula() {
-       String cedula = Consola.ingresarDato(ENTRADA.CEDULA_EXISTENTE);
+       String cedula = Consola.ingresarDatoConEscape(ENTRADA.CEDULA_EXISTENTE);
        if ( !cedula.equals("0")){ 
           g.getParticipantePorCedula(cedula).noParticipo();
        }
@@ -121,17 +121,17 @@ public class Formularios {
     public static String seleccionarOpcionMenuParticipantes() {
         int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_PARTICIPANTE.values());
         ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Consola.ingresarDato(ENTRADA.MENU);
+        return Consola.ingresarDatoConEscape(ENTRADA.MENU);
     }
     public static String seleccionarOpcionMenuActualizar() {
         int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_ACTUALIZAR.values());
         ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Consola.ingresarDato(ENTRADA.MENU);
+        return Consola.ingresarDatoConEscape(ENTRADA.MENU);
     }
     public static String seleccionarOpcionMenuPrincipal() {
         int numOpciones = MenuPrincipal.imprimirMenuPrincipal();
         ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
-        return Consola.ingresarDato(ENTRADA.MENU);
+        return Consola.ingresarDatoConEscape(ENTRADA.MENU);
     }
     
     

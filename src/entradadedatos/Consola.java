@@ -29,6 +29,18 @@ public class Consola {
 
     public static String ingresarDato(ENTRADA entrada) {
         String dato = null;
+        while (dato == null || dato.equals("0")) {
+            entrada.printPeticion();
+            dato = Consola.get_().input.nextLine().toUpperCase();
+            dato = entrada.validar(dato);
+            if ( dato == null || dato.equals("0"))
+                entrada.printError();
+        }
+        return dato; 
+    }
+    
+    public static String ingresarDatoConEscape(ENTRADA entrada){ 
+        String dato = null;
         while (dato == null) {
             entrada.printPeticion();
             dato = Consola.get_().input.nextLine().toUpperCase();
