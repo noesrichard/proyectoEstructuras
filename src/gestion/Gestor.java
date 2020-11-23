@@ -167,16 +167,6 @@ public class Gestor {
         }
     }
     
-    public void imprimirListaParticipantesSiParticipes(){ 
-        MENSAJE.imprimirCabecera();
-        for ( int i = 0; i < listaParticipantes.length; i++){ 
-            Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getHoraComparable() != 0) {
-                System.out.println(p.toString());
-            }
-            
-        }
-    }
     
     public void imprimirParticipantePorCedula(String cedula) {
         MENSAJE.imprimirCabecera();
@@ -187,47 +177,8 @@ public class Gestor {
             }
         }
     }
-    public void imprimirPorCategoria(char categoria){ 
-        MENSAJE.imprimirCabecera();
-        for ( int i = 0; i < listaParticipantes.length; i++){
-            Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getCategoria() == categoria && p.getHoraComparable() != 0){
-                System.out.println(p.toString());
-            }
-        }
-    }
+   
         
-    public void imprimirListaParticipantesNoParticipes(){ 
-        MENSAJE.imprimirCabecera();
-        for ( int i = 0; i < listaParticipantes.length; i++){
-            Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( !p.getParticipo() ){
-                System.out.println(p.toString());
-            }
-        }
-    }
-
-    
-    public void imprimirNoCompletaron() {
-        MENSAJE.imprimirCabecera();
-        for ( int i = 0; i < listaParticipantes.length; i++){
-            Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getHoraComparable() == 0 && p.getParticipo()){
-                System.out.println(p.toString());
-            }
-        }
-    }
-    public void imprimirParticipantesPorAuspiciante(int opcion){ 
-        MENSAJE.imprimirCabecera();
-        String auspiciante = (String)listaAuspiciantes.iterar(opcion-1);
-        for ( int i = 0; i < listaParticipantes.length; i++){
-            Participante p = (Participante)listaParticipantes.iterar(i);
-            if ( p.getAuspiciantes().contains(auspiciante) && p.getHoraComparable() != 0){
-                System.out.println(p.toString());
-            }
-        }
-    }
-
    
     public void imprimirListaAuspiciantes() {
         for ( int i = 0; i < listaAuspiciantes.length; i++){ 
@@ -235,14 +186,7 @@ public class Gestor {
         }
     }
 
-    public void imprimirParticipante(Participante participante) {
-        for ( int i = 0; i< listaParticipantes.length; i++ ){ 
-            Participante p = (Participante)listaParticipantes.iterar(i); 
-            if ( p == participante ){ 
-                System.out.println(p.toString());
-            }
-        }
-    }
+    
     
   
 }
