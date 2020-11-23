@@ -51,13 +51,11 @@ public class Formularios {
     private static Participante getParticipantePorId() {
         String id = Consola.ingresarDato(ENTRADA.ID);
         return g.getParticipantePorId(id);
-        
     }
 
     private static Participante getParticipantePorCedula() {
         String cedula = Consola.ingresarDato(ENTRADA.CEDULA_EXISTENTE);
         return g.getParticipantePorCedula(cedula);
-         
     }
 
      public static void visualizarParticipante() {
