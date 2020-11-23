@@ -73,31 +73,19 @@ public class Gestor {
     }
 
     public void agregarParticipante(String cedula, String nombre, String apellido,
-            int edad, char sexo, String auspiciantes) {
+                                    int edad, char sexo, String auspiciantes) {
         char categoria = determinarCategoria(edad);
         Participante p = new Participante(cedula, nombre, apellido, edad, sexo, auspiciantes, categoria);
         if (listaParticipantes.add(p)) {
             this.id++;
-            MENSAJES.AGREGAR_PARTICIPANTE.printValido();
             p.setId(String.valueOf(this.id));
             guardarAuspiciantes(auspiciantes);
+            MENSAJES.AGREGAR_PARTICIPANTE.printValido();
         } else {
             MENSAJES.AGREGAR_PARTICIPANTE.printError();
         }
     }
 
-    public void borrarParticipantePorCedula(String cedula) {
-        for (int i = 0; i < listaParticipantes.length; i++) {
-            Participante p = (Participante) listaParticipantes.iterar(i);
-            if (p.getCedula().equals(cedula)) {
-                if (listaParticipantes.borrar(i)) {
-                    MENSAJES.BORRAR_PARTICIPANTE.printValido();
-                } else {
-                    MENSAJES.BORRAR_PARTICIPANTE.printError();
-                }
-            }
-        }
-    }
 
     public void borrarParticipante(Participante participante) {
         for (int i = 0; i < listaParticipantes.length; i++) {
@@ -112,7 +100,19 @@ public class Gestor {
         }
 
     }
-
+    
+    public boolean existeParticipante(String cedula){ 
+        for ( int i = 0; i < listaParticipantes.length; i++ ){ 
+            Participante p = (Participante) listaParticipantes.iterar(i);
+            if (p.getCedula().equals(cedula)) {
+                return true;
+            }
+        }
+        return false;
+        
+    }
+    
+//-------------------------------METODOS GET PARA PARTICIPANTE-----------------------------
     public Participante getParticipantePorCedula(String cedula) {
         for (int i = 0; i < listaParticipantes.length; i++) {
             Participante p = (Participante) listaParticipantes.iterar(i);
@@ -145,7 +145,9 @@ public class Gestor {
         MENSAJES.NO_SE_ENCONTRO_PARTICIPANTE.printError();
         return null;
     }
-
+//-------------------------------FINAL METODOS GET PARA PARTICIPANTE-----------------------------
+    
+    
     private boolean existeAuspiciante(String auspiciante) {
         for (int i = 0; i < listaAuspiciantes.length; i++) {
             if (((String) listaAuspiciantes.iterar(i)).equals(auspiciante)) {

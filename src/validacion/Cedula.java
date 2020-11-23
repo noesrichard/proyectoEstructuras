@@ -28,20 +28,12 @@ public class Cedula implements Validador{
         switch (this.opcion) {
             case CEDULA_NUEVA:
                 if (validarCedula(cedula)) {
-                    /*
-                     *Si existe un participante con esa cedula retorna 
-                     *falso ya que quiero ingresar una nueva cedula.
-                     */
-                    return ( g.getParticipantePorCedula(cedula) == null )? cedula: null;
+                    return ( g.existeParticipante(cedula) )? null: cedula;
                 }
                 return null;
             case CEDULA_EXISTENTE:
                 if (validarCedula(cedula)) {
-                    /*
-                     *Si existe un participante con esa cedula retorna verdadero
-                     *ya que quiero validar que esa cedula existe.
-                     */
-                    return ( g.getParticipantePorCedula(cedula) == null )? null: cedula;
+                    return ( g.existeParticipante(cedula) )? cedula: null;
                 }
                 return null;
 

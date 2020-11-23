@@ -136,8 +136,5 @@ public class Formularios {
             String tiempo = horas + ":" + minutos + ":" + segundos;
             p.setHoraDeLlegada(tiempo);
         }
-
     }
-
-    
 }
