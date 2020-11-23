@@ -5,7 +5,7 @@
  */
 package entradadedatos;
 
-import entradadedatos.ENTRADA;
+
 import java.util.Scanner;
 
 /**

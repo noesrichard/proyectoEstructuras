@@ -44,7 +44,7 @@ public class MenuPrincipal {
                 Formularios.menuRegistrarHoraDeLlegada();
                 break;
             case "Finalizado":
-                MenuReportes.menu();
+                System.out.println("OPCION NO IMPLEMENTADA");
                 break;
             default:
                 break;
