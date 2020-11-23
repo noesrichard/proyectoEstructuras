@@ -101,6 +101,17 @@ public class Gestor {
 
     }
     
+    public void imprimirParticipante(Participante participante) {
+        MENSAJES.imprimirCabecera();
+        for (int i = 0; i < listaParticipantes.length; i++) {
+            Participante p = (Participante) listaParticipantes.iterar(i);
+            if (p == participante) {
+                System.out.println(p.toString());
+            }
+        }
+
+    }
+    
     public boolean existeParticipante(String cedula){ 
         for ( int i = 0; i < listaParticipantes.length; i++ ){ 
             Participante p = (Participante) listaParticipantes.iterar(i);
@@ -145,7 +156,7 @@ public class Gestor {
         MENSAJES.NO_SE_ENCONTRO_PARTICIPANTE.printError();
         return null;
     }
-//-------------------------------FINAL METODOS GET PARA PARTICIPANTE-----------------------------
+//----------------------------------------------------------------------------------------
     
     
     private boolean existeAuspiciante(String auspiciante) {
@@ -175,16 +186,7 @@ public class Gestor {
         return listaAuspiciantes.length;
     }
 
-    public void imprimirParticipante(Participante participante) {
-        MENSAJES.imprimirCabecera();
-        for (int i = 0; i < listaParticipantes.length; i++) {
-            Participante p = (Participante) listaParticipantes.iterar(i);
-            if (p == participante) {
-                System.out.println(p.toString());
-            }
-        }
-
-    }
+   
 
     public void imprimirListaParticipantes() {
         MENSAJES.imprimirCabecera();

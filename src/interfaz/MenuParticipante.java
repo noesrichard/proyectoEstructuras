@@ -7,6 +7,7 @@ package interfaz;
 
 
 import entradadedatos.Formularios;
+import gestion.Gestor;
 import main.Participante;
 
 /**
@@ -14,6 +15,7 @@ import main.Participante;
  * @author carri
  */
 class MenuParticipante {
+    static Gestor g = Gestor.get_();
     static void menu() {
         boolean volver = false;
         do {
@@ -42,6 +44,7 @@ class MenuParticipante {
         Participante participante = Formularios.getParticipante();
         do {
             if (participante != null) {
+                g.imprimirParticipante(participante);
                 String opcion = Formularios.seleccionarOpcionMenuActualizar(); 
                 switch (opcion) {
                     case "1":

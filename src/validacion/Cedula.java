@@ -11,34 +11,21 @@ import gestion.Gestor;
  *
  * @author carri
  */
-public class Cedula implements Validador{
+public class Cedula implements Validador {
 
-    public static final int CEDULA_NUEVA = 1, CEDULA_EXISTENTE = 2;
-    private String regex;
-    private int opcion;
+    public Cedula() {
 
-    public Cedula(int opcion) {
-        this.opcion = opcion;
-        this.regex = "[0-9]+";
     }
 
     @Override
     public String validar(String cedula) {
         Gestor g = Gestor.get_();
-        switch (this.opcion) {
-            case CEDULA_NUEVA:
-                if (validarCedula(cedula)) {
-                    return ( g.existeParticipante(cedula) )? null: cedula;
-                }
-                return null;
-            case CEDULA_EXISTENTE:
-                if (validarCedula(cedula)) {
-                    return ( g.existeParticipante(cedula) )? cedula: null;
-                }
-                return null;
 
+        if (validarCedula(cedula)) {
+            return (g.existeParticipante(cedula)) ? null : cedula;
         }
         return null;
+
     }
 
     public static boolean validarCedula(String dato) {
@@ -67,5 +54,5 @@ public class Cedula implements Validador{
             return false;
         }
     }
-    
+
 }
