@@ -96,7 +96,7 @@ enum ENTRADA {
     }
 
     public void printPeticion() {
-        System.out.println(this.mensajes.getPeticion());
+        System.out.print(this.mensajes.getPeticion());
     }
 
     public void printError() {
