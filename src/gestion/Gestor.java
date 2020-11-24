@@ -198,5 +198,46 @@ public class Gestor {
             System.out.println("[" + (i + 1) + "] " + listaAuspiciantes.iterar(i).toString());
         }
     }
+   //------------------------------------------------------------------
+    public void imprimirParticipantesPorAuspiciante(int opcion){ 
+        MENSAJES.imprimirCabecera();
+        String auspiciante = (String)listaAuspiciantes.getPorPosicion(opcion-1);
+        for ( int i = 0; i < listaParticipantes.length; i++){
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( p.getAuspiciantes().contains(auspiciante) && p.getHoraComparable() != 0){
+                System.out.println(p.toString());
+            }
+        }
+    }
+
+    public void imprimirPorCategoria(char categoria){ 
+        MENSAJES.imprimirCabecera();
+        for ( int i = 0; i < listaParticipantes.length; i++){
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( p.getCategoria() == categoria && p.getHoraComparable() != 0){
+                System.out.println(p.toString());
+            }
+        }
+    }
+
+    public void imprimirListaParticipantesNoParticipes(){ 
+        MENSAJES.imprimirCabecera();
+        for ( int i = 0; i < listaParticipantes.length; i++){
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( !p.getParticipo() ){
+                System.out.println(p.toString());
+            }
+        }
+    }
+
+    public void imprimirNoCompletaron() {
+        MENSAJES.imprimirCabecera();
+        for ( int i = 0; i < listaParticipantes.length; i++){
+            Participante p = (Participante)listaParticipantes.iterar(i);
+            if ( p.getHoraComparable() == 0 && p.getParticipo()){
+                System.out.println(p.toString());
+            }
+        }
+    }
 
 }

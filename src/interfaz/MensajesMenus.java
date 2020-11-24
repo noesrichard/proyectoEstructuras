@@ -80,7 +80,43 @@ public class MensajesMenus {
             return valor;
         }
     }
-    
+    public enum MENU_REPORTES implements MENSAJES_MENUS {
+        CABEZERA("******MENU PARA ACTUALIZAR A UN PARTICIPANTE*******"),
+        OPCION_1("[1] PARTICIPANTES POR AUSPICIANTE"),
+        OPCION_2("[2] PARTICIPANTES POR CATEGORIA EN ORDEN DE LLEGADA "),
+        OPCION_3("[3] INSCRITOS QUE NO PARTICIPARON "),
+        OPCION_4("[4] PARTICIPANTES QUE NO COMPLETARON LA CARRERA"),
+        VOLVER  ("[0] VOLVER");
+
+        private String valor;
+
+        private MENU_REPORTES(String v) {
+            valor = v;
+        }
+
+        @Override
+        public String txt() {
+            return valor;
+        }
+
+    }
+      public enum MENU_CATEGORIAS implements MENSAJES_MENUS {
+        CABEZERA("*********CATEGORIAS************"),
+        A       ("[1] CATEGORIA A"),
+        B       ("[2] CATEGORIA B"),
+        C       ("[3] CATEGORIA C"),
+        VOLVER  ("[0] VOLVER");
+        private String valor;
+
+        private MENU_CATEGORIAS(String v) {
+            valor = v;
+        }
+
+        @Override
+        public String txt() {
+            return valor;
+        }
+    }
     public enum ID_O_CEDULA{ 
         
         POR_ID    ("[1] POR ID"),

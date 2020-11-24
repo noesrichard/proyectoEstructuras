@@ -50,7 +50,19 @@ public class Lista {
         this.iteracion = this.iteracion.siguiente; 
         return dato; 
     }
+    
+    Object getPorPosicion(int posicion ){ 
+        if ( posicion == 0 ){ 
+            return this.primero;
+        }
+        Nodo aux = this.primero; 
+        for ( int i = 0 ; i < posicion; i ++ ){
+            aux = aux.siguiente; 
+        }
+        return aux.dato; 
+    }
 
+   
     boolean borrar(int posicion) {
         if (this.length == 1) {
             this.primero = null;

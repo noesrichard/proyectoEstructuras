@@ -25,7 +25,7 @@ public class Main {
     
     public static void main(String[] args) {
         boolean repetir = true;
-        //pruebas();
+        pruebas();
         do{ 
             repetir = MenuPrincipal.menuPrincipal();
         }while ( repetir == true);
@@ -41,7 +41,7 @@ public class Main {
         g.agregarParticipante("123","Richrad","Carrion",12,'M',"Nike");
         g.agregarParticipante("456","Richrad","Carrion",12,'M',"Adidas");
         g.agregarParticipante("789","Richrad","Carrion",20,'M',"Puma");
-        g.agregarParticipante("1234","Richrad","Carrion",40,'M',"Nike");
+        g.agregarParticipante("1234","Richrad","Carrion",21,'M',"Nike");
         
         
         //g.borrarParticipantePorCedula("123");
@@ -50,14 +50,14 @@ public class Main {
         
         //g.imprimirParticipantePorCedula("123");
         
-        g.getParticipantePorCedula("456");
+        g.getParticipantePorCedula("456").setHoraDeLlegada("2:12:21");
         g.getParticipantePorCedula("789").setHoraDeLlegada("4:30:30");
         g.getParticipantePorCedula("1234").setHoraDeLlegada("3:20:40");
         
         
         
         g.finalizarMaraton();
-        
+        g.ordenarListaParticipantes();
         g.imprimirListaParticipantes();
         
         Participante p = g.getParticipantePorCedula("123");

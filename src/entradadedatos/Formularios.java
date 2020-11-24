@@ -132,4 +132,39 @@ public class Formularios {
             p.setHoraDeLlegada(tiempo);
         }
     }
+    public static String seleccionarOpcionMenuReportes() {
+        int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_REPORTES.values());
+        ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
+        return Consola.ingresarDato(ENTRADA.MENU);
+    }
+
+     public static void reportesPorAuspiciante() {
+        int numOpciones = g.cantidadDeAuspiciantes();
+        if (numOpciones > 0) {
+            g.imprimirListaAuspiciantes();
+            ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
+            int opcion = Integer.parseInt(Consola.ingresarDato(ENTRADA.MENU));
+            if ( opcion != 0 ){ 
+                g.imprimirParticipantesPorAuspiciante(opcion);
+            }
+        } 
+
+    }
+
+    public static void reportesPorCategoria() {
+        int numOpciones = MensajesMenus.imprimirMenu(MensajesMenus.MENU_CATEGORIAS.values());
+        ENTRADA.MENU.setNumeroDeOpcionesMenu(numOpciones);
+        String opcion = Consola.ingresarDato(ENTRADA.MENU);
+        switch (opcion) {
+            case "1": 
+                g.imprimirPorCategoria('A');
+                break;
+            case "2": 
+                g.imprimirPorCategoria('B');
+                break; 
+            case "3": 
+                g.imprimirPorCategoria('C');
+                break;
+        }
+    }
 }
